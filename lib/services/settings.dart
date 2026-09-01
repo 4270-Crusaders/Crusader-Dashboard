@@ -86,4 +86,7 @@ class PrefKeys {
   static String gridDpiOverride = 'grid_dpi_override';
   static String windowPosition = 'window_position';
   static String autoTextSubmitButton = 'auto_text_submit_button';
+  static String soundEnabled = 'sound_enabled';
+  static String soundVolume = 'sound_volume';
+  static String soundTriggers = 'sound_triggers';
 }

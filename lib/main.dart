@@ -19,6 +19,7 @@ import 'package:elastic_dashboard/services/log.dart';
 import 'package:elastic_dashboard/services/nt_connection.dart';
 import 'package:elastic_dashboard/services/nt_widget_registry.dart';
 import 'package:elastic_dashboard/services/settings.dart';
+import 'package:elastic_dashboard/services/sound_engine.dart';
 
 import 'package:path_provider/path_provider.dart'
     if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/path_stub.dart';
@@ -26,6 +27,8 @@ import 'package:screen_retriever/screen_retriever.dart'
     if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/screen_stub.dart';
 import 'package:window_manager/window_manager.dart'
     if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/window_stub.dart';
+
+SoundEngine? _soundEngine;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,6 +90,10 @@ void main() async {
 
   NTConnection ntConnection = NTConnection(ipAddress, serverMode);
 
+  _soundEngine = SoundEngine(
+      ntConnection: ntConnection, preferences: preferences);
+  await _soundEngine!.init();
+
   LicenseRegistry.addLicense(() async* {
     final robotoLicense = await rootBundle.loadString(
       'assets/third_party_licenses/OFL.txt',
@@ -144,6 +151,7 @@ void main() async {
       ntConnection: ntConnection,
       preferences: preferences,
       version: packageInfo.version,
+      soundEngine: _soundEngine,
     ),
   );
 }
@@ -233,12 +241,14 @@ class Elastic extends StatefulWidget {
   final NTConnection ntConnection;
   final SharedPreferences preferences;
   final String version;
+  final SoundEngine? soundEngine;
 
   const Elastic({
     super.key,
     required this.ntConnection,
     required this.preferences,
     required this.version,
+    this.soundEngine,
   });
 
   @override
@@ -262,6 +272,7 @@ class _ElasticState extends State<Elastic> {
       DashboardPageViewModelImpl(
         ntConnection: widget.ntConnection,
         preferences: widget.preferences,
+        soundEngine: widget.soundEngine,
         version: widget.version,
         onColorChanged: (color) => setState(() {
           teamColor = color;

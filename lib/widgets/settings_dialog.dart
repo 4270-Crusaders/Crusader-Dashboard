@@ -6,13 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:elastic_dashboard/models/sound_trigger.dart';
 import 'package:elastic_dashboard/services/ip_address_util.dart';
+import 'package:elastic_dashboard/widgets/dialog_widgets/nt_topic_picker_dialog.dart';
 import 'package:elastic_dashboard/services/nt_connection.dart';
 import 'package:elastic_dashboard/services/settings.dart';
+import 'package:elastic_dashboard/services/sound_engine.dart';
 import 'package:elastic_dashboard/services/text_formatter_builder.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_color_picker.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
@@ -21,6 +25,7 @@ import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.da
 
 class SettingsDialog extends StatefulWidget {
   final NTConnection ntConnection;
+  final SoundEngine? soundEngine;
 
   static final List<String> themeVariants =
       FlexSchemeVariant.values
@@ -62,6 +67,7 @@ class SettingsDialog extends StatefulWidget {
     super.key,
     required this.ntConnection,
     required this.preferences,
+    this.soundEngine,
     this.onTeamNumberChanged,
     this.onIPAddressModeChanged,
     this.onNTTargetServerChanged,
@@ -92,13 +98,15 @@ class _SettingsDialogState extends State<SettingsDialog> {
     title: const Text('Settings'),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
     content: DefaultTabController(
-      length: 3,
+      length: 4,
       child: SizedBox(
-        width: 450,
-        height: 400,
+        width: 520,
+        height: 420,
         child: Column(
           children: [
             const TabBar(
+              isScrollable: true,
+              tabAlignment: TabAlignment.center,
               tabs: [
                 Tab(icon: Icon(Icons.wifi_outlined), child: Text('Network')),
                 Tab(
@@ -106,11 +114,12 @@ class _SettingsDialogState extends State<SettingsDialog> {
                   child: Text('Appearance'),
                 ),
                 Tab(
+                  icon: Icon(Icons.volume_up_outlined),
+                  child: Text('Sounds'),
+                ),
+                Tab(
                   icon: Icon(Icons.code),
-                  child: Text(
-                    'Developer (Advanced)',
-                    textAlign: TextAlign.center,
-                  ),
+                  child: Text('Advanced'),
                 ),
               ],
             ),
@@ -155,6 +164,12 @@ class _SettingsDialogState extends State<SettingsDialog> {
                         ),
                       ),
                     ),
+                  ),
+                  // Sounds Tab
+                  _SoundsTab(
+                    preferences: widget.preferences,
+                    ntConnection: widget.ntConnection,
+                    soundEngine: widget.soundEngine,
                   ),
                   // Advanced Settings Tab
                   Padding(
@@ -618,5 +633,399 @@ SystemCore Internal - The Network Tables server displaying internal data from th
         ],
       ),
     ];
+  }
+}
+
+// ─── Sounds Tab ─────────────────────────────────────────────────────────────
+
+class _SoundsTab extends StatefulWidget {
+  final SharedPreferences preferences;
+  final SoundEngine? soundEngine;
+  final NTConnection ntConnection;
+
+  const _SoundsTab({
+    required this.preferences,
+    required this.ntConnection,
+    this.soundEngine,
+  });
+
+  @override
+  State<_SoundsTab> createState() => _SoundsTabState();
+}
+
+class _SoundsTabState extends State<_SoundsTab> {
+  late bool _enabled =
+      widget.preferences.getBool(PrefKeys.soundEnabled) ?? true;
+  late double _volume =
+      widget.preferences.getDouble(PrefKeys.soundVolume) ?? 1.0;
+
+  SoundEngine? get _engine => widget.soundEngine;
+
+  List<SoundTrigger> get _triggers => _engine?.triggers ?? [];
+
+  @override
+  Widget build(BuildContext context) {
+    final triggers = _triggers;
+    return Column(
+      children: [
+        // Volume + enable row
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Row(
+            children: [
+              Switch(
+                value: _enabled,
+                onChanged: (v) async {
+                  await _engine?.setEnabled(v);
+                  await widget.preferences.setBool(PrefKeys.soundEnabled, v);
+                  setState(() => _enabled = v);
+                },
+              ),
+              const Text('Sounds Enabled'),
+              const SizedBox(width: 16),
+              const Icon(Icons.volume_down, size: 18),
+              Expanded(
+                child: Slider(
+                  value: _volume,
+                  min: 0,
+                  max: 1,
+                  divisions: 20,
+                  label: (_volume * 100).round().toString(),
+                  onChanged: (v) => setState(() => _volume = v),
+                  onChangeEnd: (v) async {
+                    await _engine?.setVolume(v);
+                    await widget.preferences
+                        .setDouble(PrefKeys.soundVolume, v);
+                  },
+                ),
+              ),
+              const Icon(Icons.volume_up, size: 18),
+            ],
+          ),
+        ),
+        const Divider(height: 1),
+        // Trigger list header
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'Background Sound Triggers',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.add),
+                tooltip: 'Add trigger',
+                onPressed:
+                    _engine == null ? null : () => _openEditDialog(null),
+              ),
+            ],
+          ),
+        ),
+        // Trigger list — Expanded fills remaining space
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: triggers.isEmpty
+                ? Center(
+                    child: Text(
+                      _engine == null
+                          ? 'Sound engine unavailable'
+                          : 'No triggers — press + to add',
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: triggers.length,
+                    itemBuilder: (context, i) {
+                      final t = triggers[i];
+                      return ListTile(
+                        dense: true,
+                        title: Text(
+                          t.label.isEmpty ? t.ntTopic : t.label,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        subtitle: Text(
+                          '${t.condition.label}${t.loop ? '  •  loop' : ''}',
+                          style: const TextStyle(fontSize: 11),
+                        ),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.edit, size: 18),
+                              onPressed: () => _openEditDialog(t),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.delete, size: 18),
+                              onPressed: () async {
+                                await _engine!.removeTrigger(t.id);
+                                setState(() {});
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _openEditDialog(SoundTrigger? existing) async {
+    final SoundTrigger? result = await showDialog<SoundTrigger>(
+      context: context,
+      builder: (ctx) => _TriggerEditDialog(
+        trigger: existing,
+        ntConnection: widget.ntConnection,
+      ),
+    );
+    if (result == null) return;
+    if (existing == null) {
+      await _engine!.addTrigger(result);
+    } else {
+      await _engine!.updateTrigger(result);
+    }
+    setState(() {});
+  }
+}
+
+// ─── Trigger Edit Dialog ─────────────────────────────────────────────────────
+
+class _TriggerEditDialog extends StatefulWidget {
+  final SoundTrigger? trigger;
+  final NTConnection ntConnection;
+
+  const _TriggerEditDialog({
+    this.trigger,
+    required this.ntConnection,
+  });
+
+  @override
+  State<_TriggerEditDialog> createState() => _TriggerEditDialogState();
+}
+
+class _TriggerEditDialogState extends State<_TriggerEditDialog> {
+  late String _label;
+  late String _ntTopic;
+  late TextEditingController _ntTopicCtrl;
+  late SoundCondition _condition;
+  late double _threshold;
+  late String _soundPath;
+  late bool _loop;
+
+  @override
+  void initState() {
+    super.initState();
+    final t = widget.trigger;
+    _label = t?.label ?? '';
+    _ntTopic = t?.ntTopic ?? '';
+    _ntTopicCtrl = TextEditingController(text: _ntTopic);
+    _condition = t?.condition ?? SoundCondition.boolRising;
+    _threshold = t?.threshold ?? 0.0;
+    _soundPath = t?.soundPath ?? '';
+    _loop = t?.loop ?? false;
+  }
+
+  @override
+  void dispose() {
+    _ntTopicCtrl.dispose();
+    super.dispose();
+  }
+
+  bool get _isNumeric =>
+      _condition == SoundCondition.numberCrossDown ||
+      _condition == SoundCondition.numberCrossUp;
+
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+    title: Text(widget.trigger == null ? 'Add Trigger' : 'Edit Trigger'),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+    content: SizedBox(
+      width: 380,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              decoration: const InputDecoration(
+                labelText: 'Label (optional)',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+              ),
+              controller: TextEditingController(text: _label),
+              onChanged: (v) => _label = v,
+            ),
+            const SizedBox(height: 8),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      labelText: 'NT Topic',
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                    ),
+                    controller: _ntTopicCtrl,
+                    onChanged: (v) => _ntTopic = v,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                SizedBox(
+                  height: 48,
+                  child: ElevatedButton.icon(
+                    icon: const Icon(Icons.account_tree_outlined, size: 16),
+                    label: const Text('Browse'),
+                    onPressed: () async {
+                      final String? picked = await showNTTopicPicker(
+                        context: context,
+                        ntConnection: widget.ntConnection,
+                      );
+                      if (picked != null) {
+                        setState(() {
+                          _ntTopic = picked;
+                          _ntTopicCtrl.text = picked;
+                        });
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            DropdownButtonFormField<SoundCondition>(
+              value: _condition,
+              decoration: const InputDecoration(
+                labelText: 'Condition',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+              ),
+              items: SoundCondition.values
+                  .map((c) => DropdownMenuItem(
+                        value: c,
+                        child: Text(c.label),
+                      ))
+                  .toList(),
+              onChanged: (v) {
+                if (v != null) setState(() => _condition = v);
+              },
+            ),
+            if (_isNumeric) ...[
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Threshold',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                ),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                controller:
+                    TextEditingController(text: _threshold.toString()),
+                onChanged: (v) =>
+                    _threshold = double.tryParse(v) ?? _threshold,
+              ),
+            ],
+            const SizedBox(height: 8),
+            _SoundFileRow(
+              initialPath: _soundPath,
+              onPathSelected: (p) => setState(() => _soundPath = p),
+            ),
+            const SizedBox(height: 4),
+            SwitchListTile(
+              title: const Text('Loop until condition ends'),
+              value: _loop,
+              onChanged: (v) => setState(() => _loop = v),
+              dense: true,
+            ),
+          ],
+        ),
+      ),
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Text('Cancel'),
+      ),
+      ElevatedButton(
+        onPressed: _ntTopic.isEmpty
+            ? null
+            : () {
+                final trigger = (widget.trigger ??
+                        SoundTrigger())
+                    .copyWith(
+                  label: _label,
+                  ntTopic: _ntTopic,
+                  condition: _condition,
+                  threshold: _threshold,
+                  soundPath: _soundPath,
+                  loop: _loop,
+                );
+                Navigator.of(context).pop(trigger);
+              },
+        child: const Text('Save'),
+      ),
+    ],
+  );
+}
+
+class _SoundFileRow extends StatefulWidget {
+  final String initialPath;
+  final void Function(String) onPathSelected;
+
+  const _SoundFileRow(
+      {required this.initialPath, required this.onPathSelected});
+
+  @override
+  State<_SoundFileRow> createState() => _SoundFileRowState();
+}
+
+class _SoundFileRowState extends State<_SoundFileRow> {
+  late String _path = widget.initialPath;
+
+  @override
+  Widget build(BuildContext context) {
+    final String name =
+        _path.isEmpty ? 'No file selected' : _path.split('/').last;
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                  color: Theme.of(context).colorScheme.outline),
+            ),
+            child: Text(name, overflow: TextOverflow.ellipsis),
+          ),
+        ),
+        const SizedBox(width: 8),
+        ElevatedButton(
+          onPressed: () async {
+            const XTypeGroup audioGroup = XTypeGroup(
+              label: 'Audio',
+              extensions: ['wav', 'mp3', 'ogg', 'aac', 'm4a'],
+            );
+            final XFile? file =
+                await openFile(acceptedTypeGroups: [audioGroup]);
+            if (file != null) {
+              setState(() => _path = file.path);
+              widget.onPathSelected(file.path);
+            }
+          },
+          child: const Text('Browse'),
+        ),
+      ],
+    );
   }
 }

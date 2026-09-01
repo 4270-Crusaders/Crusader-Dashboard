@@ -1,0 +1,9 @@
+sounds:
+  hub_deactivate: hub_off.wav
+  hub_activate: hub_on.wav
+  shift_warning: beep.wav
+  endgame: alarm.wav
+  jammed: buzz.wav
+  shooter_ready: chime.wav
+volume: 1.0
+enabled: true

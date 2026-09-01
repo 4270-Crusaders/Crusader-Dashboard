@@ -22,6 +22,7 @@ mixin DashboardPageSettings on DashboardPageViewModel {
       builder: (context) => SettingsDialog(
         ntConnection: ntConnection,
         preferences: preferences,
+        soundEngine: soundEngine,
         onTeamNumberChanged: changeTeamNumber,
         onIPAddressModeChanged: (mode) async {
           if (mode.id == preferences.getInt(PrefKeys.ipAddressMode)) {

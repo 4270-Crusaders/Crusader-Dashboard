@@ -28,6 +28,7 @@ import 'package:elastic_dashboard/services/hotkey_manager.dart';
 import 'package:elastic_dashboard/services/ip_address_util.dart';
 import 'package:elastic_dashboard/services/log.dart';
 import 'package:elastic_dashboard/services/nt_connection.dart';
+import 'package:elastic_dashboard/services/sound_engine.dart';
 import 'package:elastic_dashboard/services/settings.dart';
 import 'package:elastic_dashboard/services/update_checker.dart';
 import 'package:elastic_dashboard/util/tab_data.dart';
@@ -92,6 +93,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
   final String version;
   final NTConnection ntConnection;
   final SharedPreferences preferences;
+  final SoundEngine? soundEngine;
   late final UpdateChecker? updateChecker;
   late final ElasticLayoutDownloader? layoutDownloader;
   final Function(Color color)? onColorChanged;
@@ -121,6 +123,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
   DashboardPageViewModel({
     required this.ntConnection,
     required this.preferences,
+    this.soundEngine,
     required this.version,
     UpdateChecker? updateChecker,
     ElasticLayoutDownloader? layoutDownloader,
