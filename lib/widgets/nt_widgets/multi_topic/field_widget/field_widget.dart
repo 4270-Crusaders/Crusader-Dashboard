@@ -6,11 +6,11 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:provider/provider.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/util/test_utils.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/field_widget/coordinate_system_converter.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/field_widget/field_widget_model.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/util/test_utils.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/multi_topic/field_widget/coordinate_system_converter.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/multi_topic/field_widget/field_widget_model.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 extension _SizeUtils on Size {
   Offset get toOffset => Offset(width, height);

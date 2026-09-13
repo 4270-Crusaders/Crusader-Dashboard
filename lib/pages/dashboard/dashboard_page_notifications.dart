@@ -4,8 +4,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:elegant_notification/resources/stacked_options.dart';
 
-import 'package:elastic_dashboard/pages/dashboard_page.dart';
-import 'package:elastic_dashboard/services/log.dart';
+import 'package:crusader_dashboard/pages/dashboard_page.dart';
+import 'package:crusader_dashboard/services/log.dart';
 
 mixin DashboardPageNotifications on DashboardPageViewModel {
   @override

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dot_cast/dot_cast.dart';
 
-import 'package:elastic_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
 
 class ElasticLibListener {
   bool _alertFirstRun = true;

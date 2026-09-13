@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
 
 /// Opens a searchable list of announced NT topics. Returns the selected topic
 /// name, or null if cancelled.

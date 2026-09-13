@@ -7,8 +7,8 @@ import 'package:http/http.dart';
 import 'package:mockito/mockito.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-import 'package:elastic_dashboard/widgets/custom_loading_indicator.dart';
-import 'package:elastic_dashboard/widgets/mjpeg.dart';
+import 'package:crusader_dashboard/widgets/custom_loading_indicator.dart';
+import 'package:crusader_dashboard/widgets/mjpeg.dart';
 import '../test_util.dart';
 import '../test_util.mocks.dart';
 

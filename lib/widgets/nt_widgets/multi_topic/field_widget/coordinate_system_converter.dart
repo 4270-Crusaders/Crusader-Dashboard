@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:elastic_dashboard/services/field_images.dart';
+import 'package:crusader_dashboard/services/field_images.dart';
 
 class CoordinateSystemConverter {
   /// Entry point to convert any CoordinateSystem to the internal mapping

@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
 
 extension Uint8ListToBitArray on Uint8List {
   List<bool> toBitArray() {

@@ -1,4 +1,4 @@
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
 class TabData {
   String name;

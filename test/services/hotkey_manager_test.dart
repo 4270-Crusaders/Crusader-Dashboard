@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:elastic_dashboard/services/hotkey_manager.dart';
+import 'package:crusader_dashboard/services/hotkey_manager.dart';
 
 class MockShortcutCallback extends Mock {
   void callback();

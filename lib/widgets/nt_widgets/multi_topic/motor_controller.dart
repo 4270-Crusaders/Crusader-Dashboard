@@ -4,8 +4,8 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:geekyants_flutter_gauges/geekyants_flutter_gauges.dart';
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 class MotorControllerModel extends MultiTopicNTWidgetModel {
   @override

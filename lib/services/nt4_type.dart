@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dot_cast/dot_cast.dart';
 
-import 'package:elastic_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/log.dart';
 
 /// This class represents the different types of NT4 data.
 /// It may not contain the whole type in itself (e.g. array, nullable)

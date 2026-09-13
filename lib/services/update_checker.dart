@@ -1,7 +1,7 @@
 import 'package:github/github.dart';
 import 'package:version/version.dart';
 
-import 'package:elastic_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/log.dart';
 
 extension on Release {
   Version? getVersion() {

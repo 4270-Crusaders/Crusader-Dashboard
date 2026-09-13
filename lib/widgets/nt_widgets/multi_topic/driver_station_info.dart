@@ -6,9 +6,9 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:patterns_canvas/patterns_canvas.dart';
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/struct_schemas/nt_struct.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/struct_schemas/nt_struct.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 class DriverStationInfoModel extends MultiTopicNTWidgetModel {
   @override

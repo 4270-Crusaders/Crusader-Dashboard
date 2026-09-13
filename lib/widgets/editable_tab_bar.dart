@@ -6,12 +6,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/util/tab_data.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/gesture/context_menu_listener.dart';
-import 'package:elastic_dashboard/widgets/pixel_ratio_override.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/util/tab_data.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/gesture/context_menu_listener.dart';
+import 'package:crusader_dashboard/widgets/pixel_ratio_override.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
 class EditableTabBar extends StatelessWidget {
   final SharedPreferences preferences;

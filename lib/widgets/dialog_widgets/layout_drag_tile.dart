@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:elastic_dashboard/widgets/draggable_containers/models/layout_container_model.dart';
-import 'package:elastic_dashboard/widgets/gesture/drag_container_listener.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/layout_container_model.dart';
+import 'package:crusader_dashboard/widgets/gesture/drag_container_listener.dart';
 
 class LayoutDragTile extends StatelessWidget {
   final int gridIndex;

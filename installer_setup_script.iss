@@ -1,8 +1,8 @@
-#define MyAppName "Rebuilt Dashboard"
-#define MyAppFolderName "FRC Rebuilt Dashboard"
+#define MyAppName "Crusader Dashboard"
+#define MyAppFolderName "FRC Crusader Dashboard"
 #define MyAppPublisher "FRC Team 4270"
 #define MyAppURL "https://github.com/4270-Crusaders/Rebuilt-Dashboard/"
-#define MyAppExeName "elastic_dashboard.exe"
+#define MyAppExeName "crusader_dashboard.exe"
 #define MyAppSourceDir "build\windows\x64\runner\Release"
 #define MyAppExePath MyAppSourceDir + "\" + MyAppExeName
 #define AppVersionName GetStringFileInfo(MyAppExePath, "ProductVersion")
@@ -35,7 +35,7 @@ LicenseFile=LICENSE
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=build\windows\x64\installer
-OutputBaseFilename=elastic-setup-windows
+OutputBaseFilename=crusader-dashboard-setup-windows
 SetupIconFile=assets\icon.ico
 Compression=lzma
 SolidCompression=yes

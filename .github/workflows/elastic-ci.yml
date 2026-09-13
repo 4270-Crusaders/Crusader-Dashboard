@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Elastic
+name: Crusader Dashboard
 
 on:
   push:
@@ -110,22 +110,22 @@ jobs:
             platform-name: "Windows"
             platform: "windows"
             build-path: "build/windows/x64/runner/Release"
-            artifact-name: Elastic-Windows
-            artifact-file: Elastic-Windows.zip
+            artifact-name: CrusaderDashboard-Windows
+            artifact-file: CrusaderDashboard-Windows.zip
             wpilib: false
           - os: macos-latest
             platform-name: "MacOS"
             platform: "macos"
             build-path: "build/macos/Build/Products/Release"
-            artifact-name: Elastic-macOS
-            artifact-file: Elastic-macOS.zip
+            artifact-name: CrusaderDashboard-macOS
+            artifact-file: CrusaderDashboard-macOS.zip
             wpilib: false
           - os: ubuntu-22.04
             platform-name: "Linux"
             platform: "linux"
             build-path: "build/linux/x64/release/bundle"
-            artifact-name: Elastic-Linux
-            artifact-file: Elastic-Linux.zip
+            artifact-name: CrusaderDashboard-Linux
+            artifact-file: CrusaderDashboard-Linux.zip
             wpilib: false
 
           # WPILib builds
@@ -133,22 +133,22 @@ jobs:
             platform-name: "WPILib Windows"
             platform: "windows"
             build-path: "build/windows/x64/runner/Release"
-            artifact-name: Elastic-WPILib-Windows
-            artifact-file: Elastic-WPILib-Windows.zip
+            artifact-name: CrusaderDashboard-WPILib-Windows
+            artifact-file: CrusaderDashboard-WPILib-Windows.zip
             wpilib: true
           - os: macos-latest
             platform-name: "WPILib MacOS"
             platform: "macos"
             build-path: "build/macos/Build/Products/Release"
-            artifact-name: Elastic-WPILib-macOS
-            artifact-file: Elastic-WPILib-macOS.tar.gz
+            artifact-name: CrusaderDashboard-WPILib-macOS
+            artifact-file: CrusaderDashboard-WPILib-macOS.tar.gz
             wpilib: true
           - os: ubuntu-22.04
             platform-name: "WPILib Linux"
             platform: "linux"
             build-path: "build/linux/x64/release/bundle"
-            artifact-name: Elastic-WPILib-Linux
-            artifact-file: Elastic-WPILib-Linux.zip
+            artifact-name: CrusaderDashboard-WPILib-Linux
+            artifact-file: CrusaderDashboard-WPILib-Linux.zip
             wpilib: true
 
     name: "Build - ${{ matrix.platform-name }}"
@@ -188,12 +188,12 @@ jobs:
       - name: Zip MacOS Release
         if: matrix.platform == 'macos' && !matrix.wpilib
         working-directory: ${{ matrix.build-path }}
-        run: zip -r ${{ github.workspace }}/${{ matrix.artifact-file }} elastic_dashboard.app --symlinks
+        run: zip -r ${{ github.workspace }}/${{ matrix.artifact-file }} crusader_dashboard.app --symlinks
 
       - name: Zip MacOS Release (WPILib)
         if: matrix.platform == 'macos' && matrix.wpilib
         working-directory: ${{ matrix.build-path }}
-        run: tar -zcvf ${{ github.workspace }}/${{ matrix.artifact-file }} elastic_dashboard.app
+        run: tar -zcvf ${{ github.workspace }}/${{ matrix.artifact-file }} crusader_dashboard.app
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
@@ -206,15 +206,15 @@ jobs:
         if: matrix.platform == 'macos' && !matrix.wpilib
         uses: L-Super/create-dmg-actions@v1.1.0
         with:
-          dmg_name: ${{ matrix.build-path }}/elastic-setup-macos
-          src_dir: ${{ matrix.build-path }}/elastic_dashboard.app
+          dmg_name: ${{ matrix.build-path }}/crusader-dashboard-setup-macos
+          src_dir: ${{ matrix.build-path }}/crusader_dashboard.app
 
       - name: Upload macOS installer
         if: matrix.platform == 'macos' && !matrix.wpilib
         uses: actions/upload-artifact@v7
         with:
           archive: false
-          path: ${{ matrix.build-path }}/elastic-setup-macos.dmg
+          path: ${{ matrix.build-path }}/crusader-dashboard-setup-macos.dmg
           if-no-files-found: error
 
       - name: Install Inno Setup
@@ -252,7 +252,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: Elastic-Web
+          name: CrusaderDashboard-Web
           path: build/web
           if-no-files-found: error
 
@@ -260,25 +260,25 @@ jobs:
         working-directory: .github/ipk_build
         run: |
           ./build.sh
-          mv elastic_dashboard_*.ipk Elastic-SystemCore.ipk
+          mv elastic_dashboard_*.ipk CrusaderDashboard-SystemCore.ipk
 
       - name: Upload SystemCore installer
         uses: actions/upload-artifact@v7
         with:
           archive: false
-          path: .github/ipk_build/Elastic-SystemCore.ipk
+          path: .github/ipk_build/CrusaderDashboard-SystemCore.ipk
           if-no-files-found: error
 
   github-pages:
     name: "Upload to GitHub Pages"
     runs-on: ubuntu-22.04
-    if: github.repository == 'Gold872/elastic_dashboard' && github.ref == 'refs/heads/main'
+    if: github.repository == '4270-Crusaders/Rebuilt-Dashboard' && github.ref == 'refs/heads/main'
     needs: [build-web]
     steps:
       - name: Download Web Build
         uses: actions/download-artifact@v8
         with:
-          name: Elastic-Web
+          name: CrusaderDashboard-Web
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v5
@@ -301,7 +301,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           path: artifacts
-          pattern: Elastic-*
+          pattern: CrusaderDashboard-*
           merge-multiple: true
           skip-decompress: true
 
@@ -309,7 +309,7 @@ jobs:
         working-directory: artifacts
         run: |
           ls -al
-          mv Elastic-Windows.zip Elastic-Windows_portable.zip
+          mv CrusaderDashboard-Windows.zip CrusaderDashboard-Windows_portable.zip
 
       - name: Get Draft Release Info
         id: release_info

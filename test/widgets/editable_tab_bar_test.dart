@@ -5,10 +5,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/util/tab_data.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/editable_tab_bar.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/util/tab_data.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/editable_tab_bar.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 import '../test_util.dart';
 import '../test_util.mocks.dart';
 

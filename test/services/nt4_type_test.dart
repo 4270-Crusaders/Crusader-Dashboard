@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:elastic_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
 
 void main() {
   group('[NT4 Type Parsing]:', () {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-import 'package:elastic_dashboard/services/field_images.dart';
+import 'package:crusader_dashboard/services/field_images.dart';
 
 class FieldChooser extends StatefulWidget {
   final List<Field>? choices;

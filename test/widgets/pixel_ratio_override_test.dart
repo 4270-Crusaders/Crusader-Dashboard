@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:elastic_dashboard/widgets/pixel_ratio_override.dart';
+import 'package:crusader_dashboard/widgets/pixel_ratio_override.dart';
 import '../test_util.dart';
 
 void main() {

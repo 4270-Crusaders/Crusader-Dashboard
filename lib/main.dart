@@ -12,21 +12,21 @@ import 'package:logger/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/pages/dashboard_page.dart';
-import 'package:elastic_dashboard/services/app_distributor.dart';
-import 'package:elastic_dashboard/services/field_images.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/nt_widget_registry.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/services/sound_engine.dart';
+import 'package:crusader_dashboard/pages/dashboard_page.dart';
+import 'package:crusader_dashboard/services/app_distributor.dart';
+import 'package:crusader_dashboard/services/field_images.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/nt_widget_registry.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/services/sound_engine.dart';
 
 import 'package:path_provider/path_provider.dart'
-    if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/path_stub.dart';
+    if (dart.library.js_interop) 'package:crusader_dashboard/util/stub/path_stub.dart';
 import 'package:screen_retriever/screen_retriever.dart'
-    if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/screen_stub.dart';
+    if (dart.library.js_interop) 'package:crusader_dashboard/util/stub/screen_stub.dart';
 import 'package:window_manager/window_manager.dart'
-    if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/window_stub.dart';
+    if (dart.library.js_interop) 'package:crusader_dashboard/util/stub/window_stub.dart';
 
 SoundEngine? _soundEngine;
 

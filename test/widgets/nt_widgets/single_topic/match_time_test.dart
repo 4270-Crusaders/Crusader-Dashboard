@@ -4,16 +4,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/nt4_type.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/nt_widget_registry.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/draggable_nt_widget_container.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/models/nt_widget_container_model.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/match_time.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/nt_widget_registry.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/draggable_nt_widget_container.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/nt_widget_container_model.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/single_topic/match_time.dart';
 import '../../../test_util.dart';
 
 void main() {

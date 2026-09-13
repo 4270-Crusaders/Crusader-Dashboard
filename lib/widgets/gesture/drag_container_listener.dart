@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:elastic_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
-import 'package:elastic_dashboard/widgets/gesture/drag_listener.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
+import 'package:crusader_dashboard/widgets/gesture/drag_listener.dart';
 
 class DragContainerListener<T extends WidgetContainerModel>
     extends StatefulWidget {

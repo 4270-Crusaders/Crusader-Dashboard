@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/models/sound_trigger.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/models/sound_trigger.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/settings.dart';
 
 class SoundEngine {
   final NTConnection ntConnection;

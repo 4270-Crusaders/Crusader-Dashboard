@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:elastic_dashboard/pages/dashboard_page.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/util/tab_data.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/pages/dashboard_page.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/util/tab_data.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
 mixin DashboardPageTabs on DashboardPageViewModel {
   @override

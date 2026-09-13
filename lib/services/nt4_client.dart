@@ -12,9 +12,9 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:msgpack_dart/msgpack_dart.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt4_type.dart';
-import 'package:elastic_dashboard/services/struct_schemas/nt_struct.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/struct_schemas/nt_struct.dart';
 
 class NT4Subscription extends ValueNotifier<Object?> {
   final String topic;

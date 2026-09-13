@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:logger/logger.dart';
 
-import 'package:elastic_dashboard/services/ip_address_util.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/ip_address_util.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
 
 extension LogLevelUtil on Level {
   String get levelName => switch (this) {

@@ -8,14 +8,14 @@ import 'package:file_selector/file_selector.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/models/sound_trigger.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/models/sound_trigger.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
   static const String widgetType = 'Sound Trigger';

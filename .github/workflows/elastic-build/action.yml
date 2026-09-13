@@ -1,5 +1,5 @@
-name: "Elastic Build"
-description: "Builds Elastic for a specific platform"
+name: "Crusader Dashboard Build"
+description: "Builds Crusader Dashboard for a specific platform"
 
 inputs:
   flutter_version:

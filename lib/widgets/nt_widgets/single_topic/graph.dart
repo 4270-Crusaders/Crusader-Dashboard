@@ -7,11 +7,11 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/services/nt4_client.dart';
-import 'package:elastic_dashboard/services/text_formatter_builder.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_color_picker.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/services/nt4_client.dart';
+import 'package:crusader_dashboard/services/text_formatter_builder.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_color_picker.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 extension on double {
   String toGraphValueString() {

@@ -9,14 +9,14 @@ import 'package:logger/logger.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/services/ip_address_util.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_color_picker.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
-import 'package:elastic_dashboard/widgets/settings_dialog.dart';
+import 'package:crusader_dashboard/services/ip_address_util.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_color_picker.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
+import 'package:crusader_dashboard/widgets/settings_dialog.dart';
 import '../test_util.dart';
 
 class FakeSettingsMethods extends Mock {

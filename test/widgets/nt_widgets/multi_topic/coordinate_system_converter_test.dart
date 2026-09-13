@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:elastic_dashboard/services/field_images.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/field_widget/coordinate_system_converter.dart';
+import 'package:crusader_dashboard/services/field_images.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/multi_topic/field_widget/coordinate_system_converter.dart';
 
 void main() {
   group('CoordinateSystemConverter', () {

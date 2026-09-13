@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:elastic_dashboard/services/struct_schemas/pose2d_struct.dart';
+import 'package:crusader_dashboard/services/struct_schemas/pose2d_struct.dart';
 
 List<int> testPose2dStruct = [
   0x00,

@@ -4,9 +4,9 @@ import 'package:dot_cast/dot_cast.dart';
 import 'package:flutter_context_menu/flutter_context_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/draggable_widget_container.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/draggable_widget_container.dart';
 
 abstract class WidgetContainerModel extends ChangeNotifier {
   final Key key = UniqueKey();

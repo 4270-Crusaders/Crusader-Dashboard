@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/services/nt4_type.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/nt_widget_registry.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/draggable_widget_container.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/models/nt_widget_container_model.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
-import 'package:elastic_dashboard/widgets/network_tree/networktables_tree.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/camera_stream.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/yagsl_swerve_drive.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/boolean_box.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/text_display.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/nt_widget_registry.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/draggable_widget_container.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/nt_widget_container_model.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
+import 'package:crusader_dashboard/widgets/network_tree/networktables_tree.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/multi_topic/camera_stream.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/multi_topic/yagsl_swerve_drive.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/single_topic/boolean_box.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/single_topic/text_display.dart';
 
 class NetworkTableTreeRow {
   final NTConnection ntConnection;

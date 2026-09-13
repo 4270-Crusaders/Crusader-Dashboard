@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/pages/dashboard_page.dart';
-import 'package:elastic_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/pages/dashboard_page.dart';
+import 'package:crusader_dashboard/services/settings.dart';
 
 class DashboardPageFooter extends StatelessWidget {
   final DashboardPageViewModel model;

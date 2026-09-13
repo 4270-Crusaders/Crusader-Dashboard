@@ -14,33 +14,33 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:elastic_dashboard/pages/dashboard/add_widget_dialog.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_footer.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_layouts.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_notifications.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_settings.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_tabs.dart';
-import 'package:elastic_dashboard/pages/dashboard/dashboard_page_window.dart';
-import 'package:elastic_dashboard/services/app_distributor.dart';
-import 'package:elastic_dashboard/services/elastic_layout_downloader.dart';
-import 'package:elastic_dashboard/services/elasticlib_listener.dart';
-import 'package:elastic_dashboard/services/hotkey_manager.dart';
-import 'package:elastic_dashboard/services/ip_address_util.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/services/sound_engine.dart';
-import 'package:elastic_dashboard/services/update_checker.dart';
-import 'package:elastic_dashboard/util/tab_data.dart';
-import 'package:elastic_dashboard/util/test_utils.dart';
-import 'package:elastic_dashboard/widgets/custom_appbar.dart';
-import 'package:elastic_dashboard/widgets/editable_tab_bar.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/pages/dashboard/add_widget_dialog.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_footer.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_layouts.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_notifications.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_settings.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_tabs.dart';
+import 'package:crusader_dashboard/pages/dashboard/dashboard_page_window.dart';
+import 'package:crusader_dashboard/services/app_distributor.dart';
+import 'package:crusader_dashboard/services/elastic_layout_downloader.dart';
+import 'package:crusader_dashboard/services/elasticlib_listener.dart';
+import 'package:crusader_dashboard/services/hotkey_manager.dart';
+import 'package:crusader_dashboard/services/ip_address_util.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/services/sound_engine.dart';
+import 'package:crusader_dashboard/services/update_checker.dart';
+import 'package:crusader_dashboard/util/tab_data.dart';
+import 'package:crusader_dashboard/util/test_utils.dart';
+import 'package:crusader_dashboard/widgets/custom_appbar.dart';
+import 'package:crusader_dashboard/widgets/editable_tab_bar.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
-import 'package:elastic_dashboard/util/stub/unload_handler_stub.dart'
-    if (dart.library.js_interop) 'package:elastic_dashboard/util/unload_handler.dart';
+import 'package:crusader_dashboard/util/stub/unload_handler_stub.dart'
+    if (dart.library.js_interop) 'package:crusader_dashboard/util/unload_handler.dart';
 import 'package:window_manager/window_manager.dart'
-    if (dart.library.js_interop) 'package:elastic_dashboard/util/stub/window_stub.dart';
+    if (dart.library.js_interop) 'package:crusader_dashboard/util/stub/window_stub.dart';
 
 enum LayoutDownloadMode {
   overwrite(
@@ -339,7 +339,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
     } else if (updateResponse.onLatestVersion && notifyIfLatest) {
       showInfoNotification(
         title: 'No Updates Available',
-        message: 'You are running on the latest version of Rebuilt Dashboard',
+        message: 'You are running on the latest version of Crusader Dashboard',
         width: 350,
         height: 75,
       );
@@ -397,7 +397,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
         Container(
           constraints: const BoxConstraints(maxWidth: 353),
           child: const Text(
-            'Rebuilt Dashboard is FRC Team 4270 Crusaders\' fork of Elastic, which was created by Nadav from FRC Team 353, the POBots, in the Summer of 2023.\n',
+            'Crusader Dashboard is FRC Team 4270 Crusaders\' fork of Elastic, which was created by Nadav from FRC Team 353, the POBots, in the Summer of 2023.\n',
           ),
         ),
         Container(
@@ -409,7 +409,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
         Container(
           constraints: const BoxConstraints(maxWidth: 353),
           child: const Text(
-            'Rebuilt Dashboard is an ongoing project; if you have any ideas, feedback, or bug reports, feel free to share them on the Github page!\n',
+            'Crusader Dashboard is an ongoing project; if you have any ideas, feedback, or bug reports, feel free to share them on the Github page!\n',
           ),
         ),
         Container(

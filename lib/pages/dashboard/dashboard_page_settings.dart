@@ -6,13 +6,13 @@ import 'package:logger/logger.dart';
 import 'package:path/path.dart' as path;
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:elastic_dashboard/pages/dashboard_page.dart';
-import 'package:elastic_dashboard/services/ip_address_util.dart';
-import 'package:elastic_dashboard/services/log.dart';
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/settings_dialog.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/pages/dashboard_page.dart';
+import 'package:crusader_dashboard/services/ip_address_util.dart';
+import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/settings_dialog.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
 mixin DashboardPageSettings on DashboardPageViewModel {
   @override

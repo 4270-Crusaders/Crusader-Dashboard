@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/widgets/draggable_containers/draggable_layout_container.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/draggable_layout_container.dart';
 import 'models/list_layout_model.dart';
 
 class DraggableListLayout extends DraggableLayoutContainer {

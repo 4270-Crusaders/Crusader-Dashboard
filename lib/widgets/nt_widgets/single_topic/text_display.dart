@@ -4,10 +4,10 @@ import 'package:decimal/decimal.dart';
 import 'package:dot_cast/dot_cast.dart';
 import 'package:provider/provider.dart';
 
-import 'package:elastic_dashboard/services/nt4_type.dart';
-import 'package:elastic_dashboard/services/settings.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
+import 'package:crusader_dashboard/services/nt4_type.dart';
+import 'package:crusader_dashboard/services/settings.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
+import 'package:crusader_dashboard/widgets/nt_widgets/nt_widget.dart';
 
 class TextDisplayModel extends SingleTopicNTWidgetModel {
   @override

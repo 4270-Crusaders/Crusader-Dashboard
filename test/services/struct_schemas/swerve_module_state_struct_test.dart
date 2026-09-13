@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:elastic_dashboard/services/struct_schemas/swerve_module_state_struct.dart';
+import 'package:crusader_dashboard/services/struct_schemas/swerve_module_state_struct.dart';
 
 void main() {
   test('Module state with valid data', () {

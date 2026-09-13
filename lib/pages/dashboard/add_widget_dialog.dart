@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:popover/popover.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:elastic_dashboard/services/nt_connection.dart';
-import 'package:elastic_dashboard/widgets/camera_stream_list.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/layout_drag_tile.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/models/layout_container_model.dart';
-import 'package:elastic_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
-import 'package:elastic_dashboard/widgets/draggable_dialog.dart';
-import 'package:elastic_dashboard/widgets/network_tree/networktables_tree.dart';
-import 'package:elastic_dashboard/widgets/tab_grid.dart';
+import 'package:crusader_dashboard/services/nt_connection.dart';
+import 'package:crusader_dashboard/widgets/camera_stream_list.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
+import 'package:crusader_dashboard/widgets/dialog_widgets/layout_drag_tile.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/layout_container_model.dart';
+import 'package:crusader_dashboard/widgets/draggable_containers/models/widget_container_model.dart';
+import 'package:crusader_dashboard/widgets/draggable_dialog.dart';
+import 'package:crusader_dashboard/widgets/network_tree/networktables_tree.dart';
+import 'package:crusader_dashboard/widgets/tab_grid.dart';
 
 class AddWidgetDialog extends StatefulWidget {
   final NTConnection ntConnection;

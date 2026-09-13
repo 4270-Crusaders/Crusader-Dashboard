@@ -1,6 +1,6 @@
 {
-    "name": "Elastic",
-    "short_name": "Elastic",
+    "name": "Crusader Dashboard",
+    "short_name": "Crusader",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#1f47a1",
