@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:dot_cast/dot_cast.dart';
 import 'package:file_selector/file_selector.dart';
+import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
 import 'package:elastic_dashboard/models/sound_trigger.dart';
 import 'package:elastic_dashboard/services/log.dart';
+import 'package:elastic_dashboard/services/nt4_client.dart';
 import 'package:elastic_dashboard/services/settings.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
@@ -21,17 +23,17 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
   @override
   String get type => widgetType;
 
-  SoundCondition condition = SoundCondition.boolRising;
-  double threshold = 0.0;
-  String soundPath = '';
-  bool loop = false;
+  SoundCondition condition;
+  double threshold;
+  String soundPath;
+  bool loop;
 
   bool isPlaying = false;
 
   final AudioPlayer _player = AudioPlayer();
   StreamSubscription<PlayerState>? _stateSub;
   Object? _lastValue;
-  bool _listenerAttached = false;
+  NT4Subscription? _listening;
 
   SoundTriggerWidgetModel({
     required super.ntConnection,
@@ -40,30 +42,24 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
     super.ntStructMeta,
     super.dataType,
     super.period,
-    SoundCondition condition = SoundCondition.boolRising,
-    double threshold = 0.0,
-    String soundPath = '',
-    bool loop = false,
-  }) : super() {
-    this.condition = condition;
-    this.threshold = threshold;
-    this.soundPath = soundPath;
-    this.loop = loop;
-  }
+    this.condition = SoundCondition.boolRising,
+    this.threshold = 0.0,
+    this.soundPath = '',
+    this.loop = false,
+  }) : super();
 
   SoundTriggerWidgetModel.fromJson({
     required super.ntConnection,
     required super.preferences,
-    required Map<String, dynamic> jsonData,
-  }) : super.fromJson(jsonData: jsonData) {
-    condition = SoundCondition.values.firstWhere(
-      (c) => c.name == (jsonData['condition'] as String? ?? ''),
-      orElse: () => SoundCondition.boolRising,
-    );
-    threshold = (jsonData['threshold'] as num?)?.toDouble() ?? 0.0;
-    soundPath = jsonData['soundPath'] as String? ?? '';
-    loop = jsonData['loop'] as bool? ?? false;
-  }
+    required super.jsonData,
+  }) : condition = SoundCondition.values.firstWhere(
+         (c) => c.name == (jsonData['condition'] as String? ?? ''),
+         orElse: () => SoundCondition.boolRising,
+       ),
+       threshold = (jsonData['threshold'] as num?)?.toDouble() ?? 0.0,
+       soundPath = jsonData['soundPath'] as String? ?? '',
+       loop = jsonData['loop'] as bool? ?? false,
+       super.fromJson();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -92,16 +88,22 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
   }
 
   void _attachListener() {
-    if (_listenerAttached || subscription == null) return;
-    _listenerAttached = true;
-    subscription!.listen(_onValue);
+    if (identical(_listening, subscription)) return;
+    _detachListener();
+    _lastValue = null;
+    _listening = subscription;
+    subscription?.listen(_onValue);
+  }
+
+  void _detachListener() {
+    _listening?.unlisten(_onValue);
+    _listening = null;
   }
 
   void _onValue(Object? value, int timestamp) {
-    if (!_soundEnabled) return;
-
     final Object? prev = _lastValue;
     _lastValue = value;
+    if (!_soundEnabled) return;
 
     bool shouldPlay = false;
     bool shouldStop = false;
@@ -166,23 +168,23 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
 
   @override
   void resetSubscription() {
-    _listenerAttached = false;
     super.resetSubscription();
     _attachListener();
   }
 
   @override
   void softDispose({bool deleting = false}) {
-    _player.stop();
-    isPlaying = false;
     if (deleting) {
+      _detachListener();
       _stateSub?.cancel();
       _player.dispose();
+      isPlaying = false;
     }
   }
 
   @override
   void unSubscribe() {
+    _detachListener();
     _player.stop();
     isPlaying = false;
     super.unSubscribe();
@@ -273,9 +275,7 @@ class _SoundFilePickerState extends State<_SoundFilePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final String name = _path.isEmpty
-        ? 'No file selected'
-        : _path.split('/').last;
+    final String name = _path.isEmpty ? 'No file selected' : p.basename(_path);
 
     return Padding(
       padding: const EdgeInsets.all(4.0),

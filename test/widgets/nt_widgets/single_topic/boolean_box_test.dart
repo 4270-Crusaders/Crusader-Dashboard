@@ -73,6 +73,7 @@ void main() {
         'Boolean Box',
         'Toggle Switch',
         'Toggle Button',
+        'Sound Trigger',
         'Text Display',
         'Large Text Display',
       ]),

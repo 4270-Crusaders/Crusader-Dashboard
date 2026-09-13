@@ -41,6 +41,10 @@ class NT4Subscription extends ValueNotifier<Object?> {
     onChanged(value, timestamp);
   }
 
+  void unlisten(Function(Object?, int) onChanged) {
+    _listeners.remove(onChanged);
+  }
+
   Stream<Object?> periodicStream({bool yieldAll = true}) async* {
     final Duration delayTime = Duration(
       microseconds: (options.periodicRateSeconds * 1e6).round(),
@@ -117,7 +121,8 @@ class NT4Subscription extends ValueNotifier<Object?> {
       value = fieldValue;
     }
 
-    for (var listener in _listeners) {
+    // Copy so a listener may unlisten during dispatch
+    for (var listener in _listeners.toList()) {
       listener(value, timestamp);
     }
     currentValue = value;

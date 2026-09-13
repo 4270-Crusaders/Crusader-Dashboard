@@ -18,6 +18,7 @@ import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/number_bar.dar
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/number_slider.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/radial_gauge.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/single_color_view.dart';
+import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/sound_trigger_widget.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/text_display.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/toggle_button.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/toggle_switch.dart';
@@ -188,6 +189,7 @@ class SingleTopicNTWidgetModel extends NTWidgetModel {
         BooleanBox.widgetType,
         ToggleSwitch.widgetType,
         ToggleButton.widgetType,
+        SoundTriggerWidget.widgetType,
       ]);
     }
 
@@ -199,6 +201,7 @@ class SingleTopicNTWidgetModel extends NTWidgetModel {
         RadialGaugeWidget.widgetType,
         GraphWidget.widgetType,
         MatchTimeWidget.widgetType,
+        SoundTriggerWidget.widgetType,
       ]);
     }
 

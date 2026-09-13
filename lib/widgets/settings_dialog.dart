@@ -9,6 +9,7 @@ import 'package:collection/collection.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:logger/logger.dart';
+import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:elastic_dashboard/models/sound_trigger.dart';
@@ -812,7 +813,9 @@ class _TriggerEditDialog extends StatefulWidget {
 class _TriggerEditDialogState extends State<_TriggerEditDialog> {
   late String _label;
   late String _ntTopic;
+  late TextEditingController _labelCtrl;
   late TextEditingController _ntTopicCtrl;
+  late TextEditingController _thresholdCtrl;
   late SoundCondition _condition;
   late double _threshold;
   late String _soundPath;
@@ -824,16 +827,20 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
     final t = widget.trigger;
     _label = t?.label ?? '';
     _ntTopic = t?.ntTopic ?? '';
+    _labelCtrl = TextEditingController(text: _label);
     _ntTopicCtrl = TextEditingController(text: _ntTopic);
     _condition = t?.condition ?? SoundCondition.boolRising;
     _threshold = t?.threshold ?? 0.0;
+    _thresholdCtrl = TextEditingController(text: _threshold.toString());
     _soundPath = t?.soundPath ?? '';
     _loop = t?.loop ?? false;
   }
 
   @override
   void dispose() {
+    _labelCtrl.dispose();
     _ntTopicCtrl.dispose();
+    _thresholdCtrl.dispose();
     super.dispose();
   }
 
@@ -857,7 +864,7 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
               ),
-              controller: TextEditingController(text: _label),
+              controller: _labelCtrl,
               onChanged: (v) => _label = v,
             ),
             const SizedBox(height: 8),
@@ -872,7 +879,7 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
                       contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
                     ),
                     controller: _ntTopicCtrl,
-                    onChanged: (v) => _ntTopic = v,
+                    onChanged: (v) => setState(() => _ntTopic = v),
                   ),
                 ),
                 const SizedBox(width: 6),
@@ -899,7 +906,7 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
             ),
             const SizedBox(height: 8),
             DropdownButtonFormField<SoundCondition>(
-              value: _condition,
+              initialValue: _condition,
               decoration: const InputDecoration(
                 labelText: 'Condition',
                 border: OutlineInputBorder(),
@@ -928,14 +935,14 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
-                controller: TextEditingController(text: _threshold.toString()),
+                controller: _thresholdCtrl,
                 onChanged: (v) => _threshold = double.tryParse(v) ?? _threshold,
               ),
             ],
             const SizedBox(height: 8),
             _SoundFileRow(
               initialPath: _soundPath,
-              onPathSelected: (p) => setState(() => _soundPath = p),
+              onPathSelected: (path) => setState(() => _soundPath = path),
             ),
             const SizedBox(height: 4),
             SwitchListTile(
@@ -991,9 +998,7 @@ class _SoundFileRowState extends State<_SoundFileRow> {
 
   @override
   Widget build(BuildContext context) {
-    final String name = _path.isEmpty
-        ? 'No file selected'
-        : _path.split('/').last;
+    final String name = _path.isEmpty ? 'No file selected' : p.basename(_path);
     return Row(
       children: [
         Expanded(

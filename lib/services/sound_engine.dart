@@ -18,6 +18,7 @@ class SoundEngine {
 
   // One subscription per unique NT topic
   final Map<String, NT4Subscription> _subs = {};
+  final Map<String, Function(Object?, int)> _subListeners = {};
   final Map<String, Object?> _lastValues = {};
 
   // One AudioPlayer per trigger (supports independent looping)
@@ -54,11 +55,17 @@ class SoundEngine {
     await preferences.setString(PrefKeys.soundTriggers, json);
   }
 
-  void _rebuildSubscriptions() {
-    for (final sub in _subs.values) {
-      ntConnection.unSubscribe(sub);
+  void _unsubscribeAll() {
+    for (final entry in _subs.entries) {
+      entry.value.unlisten(_subListeners[entry.key]!);
+      ntConnection.unSubscribe(entry.value);
     }
     _subs.clear();
+    _subListeners.clear();
+  }
+
+  void _rebuildSubscriptions() {
+    _unsubscribeAll();
     _lastValues.clear();
 
     // Group triggers by topic
@@ -72,18 +79,19 @@ class SoundEngine {
       final sub = ntConnection.subscribe(entry.key, 0.02);
       _subs[entry.key] = sub;
       final triggers = entry.value;
-      sub.listen(
-        (value, timestamp) => _onValue(entry.key, value, triggers),
-      );
+      void listener(Object? value, int timestamp) =>
+          _onValue(entry.key, value, triggers);
+      _subListeners[entry.key] = listener;
+      sub.listen(listener);
     }
   }
 
   void _onValue(String topic, Object? value, List<SoundTrigger> triggers) {
-    if (_disposed || !enabled) return;
+    if (_disposed) return;
 
     final Object? prev = _lastValues[topic];
     _lastValues[topic] = value;
-    if (prev == null && value == null) return;
+    if (!enabled || (prev == null && value == null)) return;
 
     for (final trigger in triggers) {
       _checkTrigger(trigger, prev, value);
@@ -202,9 +210,7 @@ class SoundEngine {
 
   void dispose() {
     _disposed = true;
-    for (final sub in _subs.values) {
-      ntConnection.unSubscribe(sub);
-    }
+    _unsubscribeAll();
     for (final player in _players.values) {
       player.dispose();
     }
