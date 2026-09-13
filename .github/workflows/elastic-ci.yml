@@ -301,7 +301,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           path: artifacts
-          pattern: CrusaderDashboard-*
+          pattern: "{CrusaderDashboard,crusader-dashboard-setup}-*"
           merge-multiple: true
           skip-decompress: true
 
