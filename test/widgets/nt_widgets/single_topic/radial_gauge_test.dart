@@ -151,7 +151,7 @@ void main() {
   });
 
   testWidgets('Radial gauge widget test with pointer', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     RadialGaugeModel radialGaugeModel = RadialGaugeModel(
       ntConnection: ntConnection,
@@ -189,7 +189,7 @@ void main() {
   });
 
   testWidgets('Radial gauge widget test integer', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTConnection ntConnection = createMockOnlineNT4(
       virtualTopics: [
@@ -235,7 +235,7 @@ void main() {
   });
 
   testWidgets('Radial gauge widget test no pointer', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     RadialGaugeModel radialGaugeModel = RadialGaugeModel(
       ntConnection: ntConnection,
@@ -273,7 +273,7 @@ void main() {
   });
 
   testWidgets('Radial gauge edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     RadialGaugeModel radialGaugeModel = RadialGaugeModel(
       ntConnection: ntConnection,

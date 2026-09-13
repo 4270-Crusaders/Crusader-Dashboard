@@ -76,7 +76,7 @@ void main() {
   });
 
   testWidgets('Command scheduler widget', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel commandSchedulerModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

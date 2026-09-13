@@ -103,7 +103,7 @@ void main() {
   testWidgets('Number slider widget test continuous update', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel numberSliderModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -159,7 +159,7 @@ void main() {
   testWidgets('Number slider widget test non-continuous update', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NumberSliderModel numberSliderModel = NumberSliderModel(
       ntConnection: ntConnection,
@@ -218,7 +218,7 @@ void main() {
   });
 
   testWidgets('Number slider widget test integer', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTConnection ntConnection = createMockOnlineNT4(
       virtualTopics: [
@@ -290,7 +290,7 @@ void main() {
   });
 
   testWidgets('Number slider edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NumberSliderModel numberSliderModel = NumberSliderModel(
       ntConnection: ntConnection,

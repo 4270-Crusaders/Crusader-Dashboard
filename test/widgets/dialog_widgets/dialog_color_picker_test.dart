@@ -14,7 +14,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Color picker select', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MockColorCallback mockCallback = MockColorCallback();
 
@@ -66,7 +66,7 @@ void main() {
   });
 
   testWidgets('Color picker cancel', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MockColorCallback mockCallback = MockColorCallback();
 
@@ -118,7 +118,7 @@ void main() {
   });
 
   testWidgets('Color picker restore default', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MockColorCallback mockCallback = MockColorCallback();
 

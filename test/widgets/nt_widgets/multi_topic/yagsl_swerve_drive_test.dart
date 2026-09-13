@@ -70,7 +70,7 @@ void main() {
   });
 
   testWidgets('YAGSL swerve drive widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel yagslSwerveModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -96,7 +96,7 @@ void main() {
   });
 
   testWidgets('YAGSL swerve drive edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     YAGSLSwerveDriveModel yagslSwerveModel = YAGSLSwerveDriveModel(
       ntConnection: ntConnection,

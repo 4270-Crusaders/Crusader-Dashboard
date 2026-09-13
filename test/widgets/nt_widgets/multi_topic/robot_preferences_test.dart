@@ -84,7 +84,7 @@ void main() {
   });
 
   testWidgets('Robot preferences widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel preferencesModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

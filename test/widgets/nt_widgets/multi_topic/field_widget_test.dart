@@ -531,7 +531,7 @@ void main() {
   });
 
   testWidgets('Field widget edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     FieldWidgetModel fieldWidgetModel = FieldWidgetModel(
       ntConnection: ntConnection,

@@ -102,7 +102,7 @@ void main() {
   });
 
   testWidgets('Graph widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel graphModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -126,7 +126,7 @@ void main() {
   });
 
   testWidgets('Graph edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     GraphModel graphModel =
         NTWidgetRegistry.buildNTModelFromJson(

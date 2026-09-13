@@ -63,7 +63,7 @@ void main() {
   });
 
   testWidgets('Relay widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel relayModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

@@ -158,7 +158,7 @@ void main() {
             .error !=
         null;
     testWidgets('double', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       TextDisplayModel textDisplayModel = TextDisplayModel(
         ntConnection: ntConnection,
@@ -203,7 +203,7 @@ void main() {
     });
 
     testWidgets('int', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection intNTConnection;
 
@@ -256,7 +256,7 @@ void main() {
     });
 
     testWidgets('boolean', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection boolNTConnection;
 
@@ -317,7 +317,7 @@ void main() {
     });
 
     testWidgets('string', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection stringNTConnection;
 
@@ -381,7 +381,7 @@ void main() {
     });
 
     testWidgets('int array', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection intArrNTConnection;
 
@@ -445,7 +445,7 @@ void main() {
     });
 
     testWidgets('boolean[]', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection boolArrNTConnection;
 
@@ -512,7 +512,7 @@ void main() {
     });
 
     testWidgets('double array', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection doubleArrNTConnection;
 
@@ -575,7 +575,7 @@ void main() {
     });
 
     testWidgets('string array', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection stringArrNTConnection;
 
@@ -641,7 +641,7 @@ void main() {
     });
 
     testWidgets('no submit button', (widgetTester) async {
-      FlutterError.onError = ignoreOverflowErrors;
+      ignoreOverflowErrors();
 
       NTConnection stringNTConnection;
 
@@ -706,7 +706,7 @@ void main() {
   });
 
   testWidgets('Text display edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     TextDisplayModel textDisplayModel = TextDisplayModel(
       ntConnection: ntConnection,

@@ -9,9 +9,9 @@ Future<String?> showNTTopicPicker({
   required BuildContext context,
   required NTConnection ntConnection,
 }) => showDialog<String>(
-      context: context,
-      builder: (ctx) => _NTTopicPickerDialog(ntConnection: ntConnection),
-    );
+  context: context,
+  builder: (ctx) => _NTTopicPickerDialog(ntConnection: ntConnection),
+);
 
 class _NTTopicPickerDialog extends StatefulWidget {
   final NTConnection ntConnection;
@@ -82,8 +82,7 @@ class _NTTopicPickerDialogState extends State<_NTTopicPickerDialog> {
                             ? 'No topics match'
                             : 'Not connected — topics unavailable',
                         style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.onSurfaceVariant,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
                       ),
                     )
@@ -93,15 +92,15 @@ class _NTTopicPickerDialogState extends State<_NTTopicPickerDialog> {
                         final topic = filtered[i];
                         final parts = topic.name.split('/');
                         final leaf = parts.last;
-                        final parent =
-                            parts.length > 2 ? parts.sublist(1, parts.length - 1).join('/') : '';
+                        final parent = parts.length > 2
+                            ? parts.sublist(1, parts.length - 1).join('/')
+                            : '';
 
                         return ListTile(
                           dense: true,
                           title: Text(
                             leaf,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w600),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                           subtitle: parent.isNotEmpty ? Text(parent) : null,
                           trailing: Text(

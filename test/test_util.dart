@@ -318,31 +318,20 @@ MockClient createHttpClient({Map<String, Response>? mockGetResponses}) {
   return mockClient;
 }
 
-void ignoreOverflowErrors(
-  FlutterErrorDetails details, {
-  bool forceReport = false,
-}) {
-  // ---
-
-  bool ifIsOverflowError = false;
-  bool isUnableToLoadAsset = false;
-
-  // Detect overflow error.
-  var exception = details.exception;
-  if (exception is FlutterError) {
-    ifIsOverflowError = !exception.diagnostics.any(
-      (e) => e.value.toString().startsWith('A RenderFlex overflowed by'),
-    );
-    isUnableToLoadAsset = !exception.diagnostics.any(
-      (e) => e.value.toString().startsWith('Unable to load asset'),
-    );
-  }
-
-  // Ignore if is overflow error.
-  if (ifIsOverflowError || isUnableToLoadAsset) {
-    return;
-  } else {
-    FlutterError.dumpErrorToConsole(details, forceReport: forceReport);
-    // exit(1);
-  }
+/// Swallows [FlutterError]s (overflow, missing assets) raised while building
+/// widgets, prints any other framework error, and forwards uncaught test-body
+/// errors (failed `expect`, missing finder) to flutter_test's own handler.
+///
+/// Without that forwarding, a failing test under this override trips an
+/// assertion inside flutter_test and the runner hangs forever instead of
+/// reporting the failure.
+void ignoreOverflowErrors() {
+  final testHandler = FlutterError.onError;
+  FlutterError.onError = (FlutterErrorDetails details) {
+    if (details.library == 'Flutter test framework') {
+      testHandler?.call(details);
+    } else if (details.exception is! FlutterError) {
+      FlutterError.dumpErrorToConsole(details);
+    }
+  };
 }

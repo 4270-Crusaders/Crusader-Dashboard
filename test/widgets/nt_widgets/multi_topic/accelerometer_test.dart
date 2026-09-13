@@ -68,7 +68,7 @@ void main() {
   });
 
   testWidgets('Accelerometer widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel accelerometerModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

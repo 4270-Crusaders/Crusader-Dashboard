@@ -75,7 +75,7 @@ void main() {
   });
 
   testWidgets('Gyro widget', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel gyroModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -102,7 +102,7 @@ void main() {
   });
 
   testWidgets('Gyro widget edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     GyroModel gyroModel = GyroModel(
       ntConnection: ntConnection,

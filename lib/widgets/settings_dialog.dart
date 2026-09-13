@@ -13,7 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:elastic_dashboard/models/sound_trigger.dart';
 import 'package:elastic_dashboard/services/ip_address_util.dart';
-import 'package:elastic_dashboard/widgets/dialog_widgets/nt_topic_picker_dialog.dart';
 import 'package:elastic_dashboard/services/nt_connection.dart';
 import 'package:elastic_dashboard/services/settings.dart';
 import 'package:elastic_dashboard/services/sound_engine.dart';
@@ -22,6 +21,7 @@ import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_color_picker.dar
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_text_input.dart';
 import 'package:elastic_dashboard/widgets/dialog_widgets/dialog_toggle_switch.dart';
+import 'package:elastic_dashboard/widgets/dialog_widgets/nt_topic_picker_dialog.dart';
 
 class SettingsDialog extends StatefulWidget {
   final NTConnection ntConnection;
@@ -694,8 +694,7 @@ class _SoundsTabState extends State<_SoundsTab> {
                   onChanged: (v) => setState(() => _volume = v),
                   onChangeEnd: (v) async {
                     await _engine?.setVolume(v);
-                    await widget.preferences
-                        .setDouble(PrefKeys.soundVolume, v);
+                    await widget.preferences.setDouble(PrefKeys.soundVolume, v);
                   },
                 ),
               ),
@@ -718,8 +717,7 @@ class _SoundsTabState extends State<_SoundsTab> {
               IconButton(
                 icon: const Icon(Icons.add),
                 tooltip: 'Add trigger',
-                onPressed:
-                    _engine == null ? null : () => _openEditDialog(null),
+                onPressed: _engine == null ? null : () => _openEditDialog(null),
               ),
             ],
           ),
@@ -735,8 +733,7 @@ class _SoundsTabState extends State<_SoundsTab> {
                           ? 'Sound engine unavailable'
                           : 'No triggers — press + to add',
                       style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onSurfaceVariant,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                   )
@@ -909,10 +906,12 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
                 contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
               ),
               items: SoundCondition.values
-                  .map((c) => DropdownMenuItem(
-                        value: c,
-                        child: Text(c.label),
-                      ))
+                  .map(
+                    (c) => DropdownMenuItem(
+                      value: c,
+                      child: Text(c.label),
+                    ),
+                  )
                   .toList(),
               onChanged: (v) {
                 if (v != null) setState(() => _condition = v);
@@ -926,12 +925,11 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.fromLTRB(8, 4, 8, 4),
                 ),
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
-                controller:
-                    TextEditingController(text: _threshold.toString()),
-                onChanged: (v) =>
-                    _threshold = double.tryParse(v) ?? _threshold,
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+                controller: TextEditingController(text: _threshold.toString()),
+                onChanged: (v) => _threshold = double.tryParse(v) ?? _threshold,
               ),
             ],
             const SizedBox(height: 8),
@@ -959,9 +957,7 @@ class _TriggerEditDialogState extends State<_TriggerEditDialog> {
         onPressed: _ntTopic.isEmpty
             ? null
             : () {
-                final trigger = (widget.trigger ??
-                        SoundTrigger())
-                    .copyWith(
+                final trigger = (widget.trigger ?? SoundTrigger()).copyWith(
                   label: _label,
                   ntTopic: _ntTopic,
                   condition: _condition,
@@ -981,8 +977,10 @@ class _SoundFileRow extends StatefulWidget {
   final String initialPath;
   final void Function(String) onPathSelected;
 
-  const _SoundFileRow(
-      {required this.initialPath, required this.onPathSelected});
+  const _SoundFileRow({
+    required this.initialPath,
+    required this.onPathSelected,
+  });
 
   @override
   State<_SoundFileRow> createState() => _SoundFileRowState();
@@ -993,18 +991,17 @@ class _SoundFileRowState extends State<_SoundFileRow> {
 
   @override
   Widget build(BuildContext context) {
-    final String name =
-        _path.isEmpty ? 'No file selected' : _path.split('/').last;
+    final String name = _path.isEmpty
+        ? 'No file selected'
+        : _path.split('/').last;
     return Row(
       children: [
         Expanded(
           child: Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                  color: Theme.of(context).colorScheme.outline),
+              border: Border.all(color: Theme.of(context).colorScheme.outline),
             ),
             child: Text(name, overflow: TextOverflow.ellipsis),
           ),
@@ -1016,8 +1013,9 @@ class _SoundFileRowState extends State<_SoundFileRow> {
               label: 'Audio',
               extensions: ['wav', 'mp3', 'ogg', 'aac', 'm4a'],
             );
-            final XFile? file =
-                await openFile(acceptedTypeGroups: [audioGroup]);
+            final XFile? file = await openFile(
+              acceptedTypeGroups: [audioGroup],
+            );
             if (file != null) {
               setState(() => _path = file.path);
               widget.onPathSelected(file.path);

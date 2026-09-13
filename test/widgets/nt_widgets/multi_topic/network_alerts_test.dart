@@ -77,7 +77,7 @@ void main() {
   });
 
   testWidgets('Network alerts widget', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel networkAlertsModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

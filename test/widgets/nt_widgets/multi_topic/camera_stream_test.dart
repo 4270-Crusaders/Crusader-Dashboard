@@ -141,7 +141,7 @@ void main() {
   });
 
   testWidgets('Camera stream online widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel cameraStreamModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -171,7 +171,7 @@ void main() {
   });
 
   testWidgets('Camera stream offline widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel cameraStreamModel = NTWidgetRegistry.buildNTModelFromJson(
       createMockOfflineNT4(),
@@ -201,7 +201,7 @@ void main() {
   });
 
   testWidgets('Camera stream edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     CameraStreamModel cameraStreamModel = CameraStreamModel(
       ntConnection: ntConnection,

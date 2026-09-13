@@ -63,7 +63,7 @@ void main() {
   });
 
   testWidgets('Ultrasonic widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel ultrasonicModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

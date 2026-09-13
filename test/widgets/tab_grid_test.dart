@@ -64,7 +64,7 @@ void main() async {
   });
 
   testWidgets('Tab grid loading (Tab 1)', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 
@@ -113,7 +113,7 @@ void main() async {
   });
 
   testWidgets('Tab grid loading (2nd Tab)', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 
@@ -163,7 +163,7 @@ void main() async {
   });
 
   testWidgets('Editing properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 
@@ -240,7 +240,7 @@ void main() async {
   });
 
   testWidgets('Editing properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 
@@ -306,7 +306,7 @@ void main() async {
   });
 
   testWidgets('Dragging widgets', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 
@@ -355,7 +355,7 @@ void main() async {
   });
 
   testWidgets('Disposing properly unsubscribes', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     widgetTester.view.physicalSize = const Size(1920, 1080);
     widgetTester.view.devicePixelRatio = 1.0;
 

@@ -95,7 +95,7 @@ void main() {
   });
 
   testWidgets('PID controller widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel pidControllerModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

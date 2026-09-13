@@ -76,7 +76,7 @@ void main() {
   });
 
   testWidgets('Motor controller widget', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel motorControllerModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

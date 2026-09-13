@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
@@ -63,7 +65,7 @@ void main() {
 
   final networkSettings = find.widgetWithText(Tab, 'Network');
   final appearanceSettings = find.widgetWithText(Tab, 'Appearance');
-  final devSettings = find.widgetWithText(Tab, 'Developer (Advanced)');
+  final devSettings = find.widgetWithText(Tab, 'Advanced');
 
   setUpAll(() {
     fakeSettings = FakeSettingsMethods();
@@ -95,7 +97,7 @@ void main() {
   });
 
   testWidgets('Settings Dialog', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -161,7 +163,10 @@ void main() {
       find.widgetWithText(DialogTextInput, 'Grid DPI'),
       findsOneWidget,
     );
-    expect(find.text('Open Assets Folder'), findsOneWidget);
+    // Button is hidden on macOS
+    if (!Platform.isMacOS) {
+      expect(find.text('Open Assets Folder'), findsOneWidget);
+    }
 
     final closeButton = find.widgetWithText(TextButton, 'Close');
 
@@ -172,7 +177,7 @@ void main() {
   });
 
   testWidgets('Change team number', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -210,7 +215,7 @@ void main() {
   });
 
   testWidgets('Change IP address mode', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -257,7 +262,7 @@ void main() {
   });
 
   testWidgets('Change IP address', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -290,7 +295,7 @@ void main() {
   });
 
   testWidgets('Change NT server mode', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -347,7 +352,7 @@ void main() {
   });
 
   testWidgets('Change default period', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -383,7 +388,7 @@ void main() {
   });
 
   testWidgets('Change default graph period', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -424,7 +429,7 @@ void main() {
   });
 
   testWidgets('Change team color', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -488,7 +493,7 @@ void main() {
   });
 
   testWidgets('Change theme variant', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -555,7 +560,7 @@ void main() {
   });
 
   testWidgets('Toggle grid', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -605,7 +610,7 @@ void main() {
   });
 
   testWidgets('Change grid size', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -642,7 +647,7 @@ void main() {
   });
 
   testWidgets('Change corner radius', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     createMockOfflineNT4();
 
     await widgetTester.pumpWidget(
@@ -686,7 +691,7 @@ void main() {
   });
 
   testWidgets('Toggle driver station auto resize', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -739,7 +744,7 @@ void main() {
   });
 
   testWidgets('Toggle remember window position', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -792,7 +797,7 @@ void main() {
   });
 
   testWidgets('Toggle lock layout', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -845,7 +850,7 @@ void main() {
   });
 
   testWidgets('Change auto submit button', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -901,7 +906,7 @@ void main() {
   });
 
   testWidgets('Change log level', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -963,7 +968,7 @@ void main() {
   });
 
   testWidgets('Change Grid DPI Override', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -1018,7 +1023,7 @@ void main() {
   });
 
   testWidgets('Open assets', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -1047,5 +1052,5 @@ void main() {
     await widgetTester.tap(openAssetsButton);
 
     verify(fakeSettings.openAssetsFolder()).called(1);
-  });
+  }, skip: Platform.isMacOS);
 }

@@ -97,7 +97,7 @@ void main() {
   testWidgets('Multi color view widget test full gradient', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel multiColorViewModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -132,7 +132,7 @@ void main() {
   });
 
   testWidgets('Multi color view widget test one color', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel multiColorViewModel = NTWidgetRegistry.buildNTModelFromJson(
       createMockOnlineNT4(
@@ -175,7 +175,7 @@ void main() {
   });
 
   testWidgets('Multi color view widget test no colors', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel multiColorViewModel = NTWidgetRegistry.buildNTModelFromJson(
       createMockOnlineNT4(

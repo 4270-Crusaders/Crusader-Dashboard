@@ -76,7 +76,7 @@ void main() {
   });
 
   testWidgets('Toggle button widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel toggleButtonModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

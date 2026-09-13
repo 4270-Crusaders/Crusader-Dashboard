@@ -102,7 +102,7 @@ void main() {
   });
 
   testWidgets('Power distribution widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel powerDistributionModel =
         NTWidgetRegistry.buildNTModelFromJson(

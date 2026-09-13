@@ -85,7 +85,7 @@ void main() {
   });
 
   testWidgets('Profiled PID controller widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel profiledPIDControllerModel =
         NTWidgetRegistry.buildNTModelFromJson(

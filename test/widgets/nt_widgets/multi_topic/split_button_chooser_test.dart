@@ -84,7 +84,7 @@ void main() {
   });
 
   testWidgets('Split button chooser widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel splitButtonChooserModel =
         NTWidgetRegistry.buildNTModelFromJson(

@@ -83,7 +83,7 @@ void main() {
   });
 
   testWidgets('Encoder widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel encoderWidgetModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

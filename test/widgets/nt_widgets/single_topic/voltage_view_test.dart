@@ -105,7 +105,7 @@ void main() {
   });
 
   testWidgets('Voltage view widget test horizontal', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel voltageViewModel = VoltageViewModel(
       ntConnection: ntConnection,
@@ -145,7 +145,7 @@ void main() {
   });
 
   testWidgets('Voltage view widget test vertical', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel voltageViewModel = VoltageViewModel(
       ntConnection: ntConnection,
@@ -185,7 +185,7 @@ void main() {
   });
 
   testWidgets('Voltage view widget test with divisions', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel voltageViewModel = VoltageViewModel(
       ntConnection: ntConnection,
@@ -224,7 +224,7 @@ void main() {
   });
 
   testWidgets('Voltage view edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     VoltageViewModel voltageViewModel = VoltageViewModel(
       ntConnection: ntConnection,

@@ -91,7 +91,9 @@ void main() async {
   NTConnection ntConnection = NTConnection(ipAddress, serverMode);
 
   _soundEngine = SoundEngine(
-      ntConnection: ntConnection, preferences: preferences);
+    ntConnection: ntConnection,
+    preferences: preferences,
+  );
   await _soundEngine!.init();
 
   LicenseRegistry.addLicense(() async* {

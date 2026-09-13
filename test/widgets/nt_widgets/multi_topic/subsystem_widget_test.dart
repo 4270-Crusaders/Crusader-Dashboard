@@ -68,7 +68,7 @@ void main() {
   });
 
   testWidgets('Subsystem widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel subsystemModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

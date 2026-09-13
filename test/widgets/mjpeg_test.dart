@@ -41,7 +41,7 @@ void main() {
   });
 
   testWidgets('Connection times out', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MjpegController controller = MjpegController.withMockClient(
       streams: ['http://10.0.0.2:1181/?action=stream'],
@@ -79,7 +79,7 @@ void main() {
   });
 
   testWidgets('Return stream with error code', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MjpegController controller = MjpegController.withMockClient(
       streams: ['http://10.0.0.2:1181/?action=stream'],
@@ -191,7 +191,7 @@ void main() {
   });
 
   testWidgets('Waiting for image in stream', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MjpegController controller = MjpegController.withMockClient(
       streams: ['http://10.0.0.2:1181/?action=stream'],

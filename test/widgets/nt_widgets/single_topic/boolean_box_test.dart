@@ -106,7 +106,7 @@ void main() {
   });
 
   testWidgets('Boolean box widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel booleanBoxModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -156,7 +156,7 @@ void main() {
   });
 
   testWidgets('Boolean box edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     BooleanBoxModel booleanBoxModel =
         NTWidgetRegistry.buildNTModelFromJson(

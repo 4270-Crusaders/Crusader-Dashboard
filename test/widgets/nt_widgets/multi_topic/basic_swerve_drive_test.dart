@@ -102,7 +102,7 @@ void main() {
   });
 
   testWidgets('Basic swerve widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel swerveModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -128,7 +128,7 @@ void main() {
   });
 
   testWidgets('Basic swerve edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     BasicSwerveModel swerveModel = BasicSwerveModel(
       ntConnection: ntConnection,

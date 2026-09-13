@@ -98,7 +98,7 @@ void main() {
   });
 
   testWidgets('Three axis accelerometer widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel threeAxisAccelerometerModel =
         NTWidgetRegistry.buildNTModelFromJson(

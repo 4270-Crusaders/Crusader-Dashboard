@@ -41,7 +41,7 @@ void main() {
   });
 
   testWidgets('Editable tab bar', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -97,7 +97,7 @@ void main() {
   });
 
   testWidgets('Open new tab', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -162,7 +162,7 @@ void main() {
   });
 
   testWidgets('Close tab', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -227,7 +227,7 @@ void main() {
   });
 
   testWidgets('Reordering tabs', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -305,7 +305,7 @@ void main() {
   });
 
   testWidgets('Rename tab', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(
@@ -394,7 +394,7 @@ void main() {
   });
 
   testWidgets('Change tab', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await widgetTester.pumpWidget(
       MaterialApp(

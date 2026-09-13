@@ -50,8 +50,7 @@ class SoundEngine {
   }
 
   Future<void> _saveTriggers() async {
-    final String json =
-        jsonEncode(_triggers.map((t) => t.toJson()).toList());
+    final String json = jsonEncode(_triggers.map((t) => t.toJson()).toList());
     await preferences.setString(PrefKeys.soundTriggers, json);
   }
 
@@ -116,7 +115,10 @@ class SoundEngine {
       case SoundCondition.numberCrossDown:
         final p = _toDouble(prev);
         final c = _toDouble(curr);
-        if (p != null && c != null && p > trigger.threshold && c <= trigger.threshold) {
+        if (p != null &&
+            c != null &&
+            p > trigger.threshold &&
+            c <= trigger.threshold) {
           _play(trigger);
         }
         break;
@@ -124,7 +126,10 @@ class SoundEngine {
       case SoundCondition.numberCrossUp:
         final p = _toDouble(prev);
         final c = _toDouble(curr);
-        if (p != null && c != null && p < trigger.threshold && c >= trigger.threshold) {
+        if (p != null &&
+            c != null &&
+            p < trigger.threshold &&
+            c >= trigger.threshold) {
           _play(trigger);
         }
         break;
@@ -139,12 +144,15 @@ class SoundEngine {
 
   Future<void> _play(SoundTrigger trigger) async {
     if (trigger.soundPath.isEmpty) return;
-    final AudioPlayer player =
-        _players.putIfAbsent(trigger.id, AudioPlayer.new);
+    final AudioPlayer player = _players.putIfAbsent(
+      trigger.id,
+      AudioPlayer.new,
+    );
     try {
       await player.setVolume(volume);
       await player.setReleaseMode(
-          trigger.loop ? ReleaseMode.loop : ReleaseMode.release);
+        trigger.loop ? ReleaseMode.loop : ReleaseMode.release,
+      );
       await player.play(DeviceFileSource(trigger.soundPath));
     } catch (e) {
       logger.warning('SoundEngine: play failed for "${trigger.label}"', e);

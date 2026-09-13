@@ -89,7 +89,7 @@ void main() {
   });
 
   testWidgets('Single color view widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel singleColorViewModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,

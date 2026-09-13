@@ -17,7 +17,7 @@ void main() {
 
   late SharedPreferences preferences;
   setUp(() async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
     SharedPreferences.setMockInitialValues({});
     preferences = await SharedPreferences.getInstance();
   });

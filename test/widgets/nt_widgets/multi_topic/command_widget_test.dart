@@ -85,7 +85,7 @@ void main() {
   });
 
   testWidgets('Command widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel commandModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -130,7 +130,7 @@ void main() {
   });
 
   testWidgets('Command widget edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     CommandModel commandModel = CommandModel(
       ntConnection: ntConnection,

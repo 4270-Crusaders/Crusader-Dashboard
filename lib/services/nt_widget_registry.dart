@@ -34,7 +34,6 @@ import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/ultrasonic.dart
 import 'package:elastic_dashboard/widgets/nt_widgets/multi_topic/yagsl_swerve_drive.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/nt_widget.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/boolean_box.dart';
-import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/sound_trigger_widget.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/graph.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/large_text_display.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/match_time.dart';
@@ -43,6 +42,7 @@ import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/number_bar.dar
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/number_slider.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/radial_gauge.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/single_color_view.dart';
+import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/sound_trigger_widget.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/text_display.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/toggle_button.dart';
 import 'package:elastic_dashboard/widgets/nt_widgets/single_topic/toggle_switch.dart';
@@ -109,21 +109,22 @@ class NTWidgetRegistry {
 
     registerSingleTopic(
       name: SoundTriggerWidget.widgetType,
-      model: ({
-        required ntConnection,
-        required preferences,
-        required topic,
-        dataType,
-        period,
-        ntStructMeta,
-      }) => SoundTriggerWidgetModel(
-        ntConnection: ntConnection,
-        preferences: preferences,
-        topic: topic,
-        dataType: dataType,
-        period: period,
-        ntStructMeta: ntStructMeta,
-      ),
+      model:
+          ({
+            required ntConnection,
+            required preferences,
+            required topic,
+            dataType,
+            period,
+            ntStructMeta,
+          }) => SoundTriggerWidgetModel(
+            ntConnection: ntConnection,
+            preferences: preferences,
+            topic: topic,
+            dataType: dataType,
+            period: period,
+            ntStructMeta: ntStructMeta,
+          ),
       widget: SoundTriggerWidget.new,
       fromJson: SoundTriggerWidgetModel.fromJson,
     );

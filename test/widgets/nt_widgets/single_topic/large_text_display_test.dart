@@ -76,7 +76,7 @@ void main() {
   });
 
   testWidgets('Large text display widget', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel largeTextDisplayModel =
         SingleTopicNTWidgetModel.createDefault(

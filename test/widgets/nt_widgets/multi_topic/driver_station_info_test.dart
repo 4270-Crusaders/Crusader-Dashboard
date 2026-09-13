@@ -194,7 +194,7 @@ void main() {
   });
 
   testWidgets('DSInfo CMPTX E15, Teleop Enabled', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await pushDSInfoWidget(widgetTester, ntConnection);
 
@@ -218,7 +218,7 @@ void main() {
   });
 
   testWidgets('DSInfo NYSU Q72, Auto Enabled', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await pushDSInfoWidget(
       widgetTester,
@@ -255,7 +255,7 @@ void main() {
   });
 
   testWidgets('DSInfo NYLI2 P7, Estopped', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await pushDSInfoWidget(
       widgetTester,
@@ -292,7 +292,7 @@ void main() {
   });
 
   testWidgets('DSInfo Unkown Match, utility enabled', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await pushDSInfoWidget(
       widgetTester,
@@ -332,7 +332,7 @@ void main() {
   testWidgets('DSInfo Unknown Match, everything disconnected', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     await pushDSInfoWidget(
       widgetTester,

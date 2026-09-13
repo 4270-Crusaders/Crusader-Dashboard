@@ -105,7 +105,7 @@ void main() {
   });
 
   testWidgets('Number bar widget test horizontal', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel numberBarModel = NumberBarModel(
       ntConnection: ntConnection,
@@ -145,7 +145,7 @@ void main() {
   });
 
   testWidgets('Number bar widget test vertical', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel numberBarModel = NumberBarModel(
       ntConnection: ntConnection,
@@ -185,7 +185,7 @@ void main() {
   });
 
   testWidgets('Number bar widget test integer', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTConnection ntConnection = createMockOnlineNT4(
       virtualTopics: [
@@ -227,7 +227,7 @@ void main() {
   });
 
   testWidgets('Number bar widget test with divisions', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel numberBarModel = NumberBarModel(
       ntConnection: ntConnection,
@@ -266,7 +266,7 @@ void main() {
   });
 
   testWidgets('Number bar edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NumberBarModel numberBarModel = NumberBarModel(
       ntConnection: ntConnection,

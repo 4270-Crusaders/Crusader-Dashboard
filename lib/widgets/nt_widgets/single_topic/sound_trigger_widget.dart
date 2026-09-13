@@ -74,10 +74,8 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
     'loop': loop,
   };
 
-  bool get _soundEnabled =>
-      preferences.getBool(PrefKeys.soundEnabled) ?? true;
-  double get _volume =>
-      preferences.getDouble(PrefKeys.soundVolume) ?? 1.0;
+  bool get _soundEnabled => preferences.getBool(PrefKeys.soundEnabled) ?? true;
+  double get _volume => preferences.getDouble(PrefKeys.soundVolume) ?? 1.0;
 
   @override
   void init() {
@@ -156,7 +154,8 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
     try {
       await _player.setVolume(_volume);
       await _player.setReleaseMode(
-          loop ? ReleaseMode.loop : ReleaseMode.release);
+        loop ? ReleaseMode.loop : ReleaseMode.release,
+      );
       await _player.play(DeviceFileSource(soundPath));
       isPlaying = true;
       refresh();
@@ -194,7 +193,8 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
 
   @override
   List<Widget> getEditProperties(BuildContext context) {
-    final bool isNumeric = condition == SoundCondition.numberCrossDown ||
+    final bool isNumeric =
+        condition == SoundCondition.numberCrossDown ||
         condition == SoundCondition.numberCrossUp;
 
     return [
@@ -215,8 +215,7 @@ class SoundTriggerWidgetModel extends SingleTopicNTWidgetModel {
               );
               refresh();
             },
-            choices:
-                SoundCondition.values.map((c) => c.label).toList(),
+            choices: SoundCondition.values.map((c) => c.label).toList(),
             initialValue: condition.label,
           ),
         ],
@@ -274,8 +273,9 @@ class _SoundFilePickerState extends State<_SoundFilePicker> {
 
   @override
   Widget build(BuildContext context) {
-    final String name =
-        _path.isEmpty ? 'No file selected' : _path.split('/').last;
+    final String name = _path.isEmpty
+        ? 'No file selected'
+        : _path.split('/').last;
 
     return Padding(
       padding: const EdgeInsets.all(4.0),
@@ -283,12 +283,12 @@ class _SoundFilePickerState extends State<_SoundFilePicker> {
         children: [
           Expanded(
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
-                    color: Theme.of(context).colorScheme.outline),
+                  color: Theme.of(context).colorScheme.outline,
+                ),
               ),
               child: Text(
                 name,
@@ -309,7 +309,8 @@ class _SoundFilePickerState extends State<_SoundFilePicker> {
                 extensions: ['wav', 'mp3', 'ogg', 'aac', 'm4a'],
               );
               final XFile? file = await openFile(
-                  acceptedTypeGroups: [audioGroup]);
+                acceptedTypeGroups: [audioGroup],
+              );
               if (file != null) {
                 setState(() => _path = file.path);
                 widget.onPathSelected(file.path);
@@ -330,8 +331,7 @@ class SoundTriggerWidget extends NTWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SoundTriggerWidgetModel model =
-        cast(context.watch<NTWidgetModel>());
+    final SoundTriggerWidgetModel model = cast(context.watch<NTWidgetModel>());
     final bool playing = model.isPlaying;
     final ColorScheme cs = Theme.of(context).colorScheme;
 
@@ -363,8 +363,7 @@ class SoundTriggerWidget extends NTWidget {
           if (playing && model.loop) ...[
             const SizedBox(height: 4),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 color: cs.tertiary,
@@ -372,9 +371,10 @@ class SoundTriggerWidget extends NTWidget {
               child: Text(
                 'LOOPING',
                 style: TextStyle(
-                    fontSize: 10,
-                    color: cs.onTertiary,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 10,
+                  color: cs.onTertiary,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

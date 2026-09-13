@@ -106,7 +106,7 @@ void main() {
   });
 
   testWidgets('Match time widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel matchTimeModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -161,7 +161,7 @@ void main() {
   });
 
   testWidgets('Match time edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     MatchTimeModel matchTimeModel =
         NTWidgetRegistry.buildNTModelFromJson(

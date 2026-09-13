@@ -9,7 +9,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Does not scale if override is null', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     final key = GlobalKey();
 
@@ -29,7 +29,7 @@ void main() {
   testWidgets('Does not scale if override is equal to dpi', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     final key = GlobalKey();
 
@@ -52,7 +52,7 @@ void main() {
   testWidgets('Aligns top left if dpi override is smaller', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     final key = GlobalKey();
 
@@ -82,7 +82,7 @@ void main() {
   testWidgets('Aligns top center if dpi override is larger', (
     widgetTester,
   ) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     final key = GlobalKey();
 

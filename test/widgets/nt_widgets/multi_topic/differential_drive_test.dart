@@ -73,7 +73,7 @@ void main() {
   });
 
   testWidgets('Differential drive widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel differentialDriveModel =
         NTWidgetRegistry.buildNTModelFromJson(

@@ -49,7 +49,7 @@ Future<void> pumpDashboardPage(
   UpdateChecker? updateChecker,
   Size? size = const Size(1920, 1080),
 }) async {
-  FlutterError.onError = ignoreOverflowErrors;
+  ignoreOverflowErrors();
   if (size != null) {
     widgetTester.view.physicalSize = size;
     widgetTester.view.devicePixelRatio = 1.0;

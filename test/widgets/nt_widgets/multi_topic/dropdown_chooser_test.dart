@@ -113,7 +113,7 @@ void main() {
   });
 
   testWidgets('Dropdown chooser widget test', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     NTWidgetModel dropdownChooserModel = NTWidgetRegistry.buildNTModelFromJson(
       ntConnection,
@@ -176,7 +176,7 @@ void main() {
   });
 
   testWidgets('Dropdown chooser edit properties', (widgetTester) async {
-    FlutterError.onError = ignoreOverflowErrors;
+    ignoreOverflowErrors();
 
     DropdownChooserModel dropdownChooserModel = DropdownChooserModel(
       ntConnection: ntConnection,
