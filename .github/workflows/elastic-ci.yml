@@ -7,9 +7,9 @@ name: Crusader Dashboard
 
 on:
   push:
-    branches: ["main", "rebuilt-dashboard"]
+    branches: ["main", "Crusader-Dashboard"]
   pull_request:
-    branches: ["main", "rebuilt-dashboard"]
+    branches: ["main", "Crusader-Dashboard"]
   workflow_dispatch:
     inputs:
       upload-release:
