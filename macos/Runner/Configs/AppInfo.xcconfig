@@ -8,7 +8,7 @@
 PRODUCT_NAME = elastic_dashboard
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.gold872.elasticDashboard
+PRODUCT_BUNDLE_IDENTIFIER = com.crusaders4270.rebuiltDashboard
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.gold872. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 Gold872, 2026 FRC Team 4270. MIT License.

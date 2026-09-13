@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.gold872" "\0"
-            VALUE "FileDescription", "elastic" "\0"
+            VALUE "CompanyName", "FRC Team 4270" "\0"
+            VALUE "FileDescription", "Rebuilt Dashboard" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "elastic_dashboard" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 Gold872. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 Gold872, 2026 FRC Team 4270. MIT License." "\0"
             VALUE "OriginalFilename", "elastic_dashboard.exe" "\0"
-            VALUE "ProductName", "elastic_dashboard" "\0"
+            VALUE "ProductName", "Rebuilt Dashboard" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

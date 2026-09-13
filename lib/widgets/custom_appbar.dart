@@ -96,7 +96,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   CustomAppBar({
     super.key,
-    this.titleText = 'Elastic',
+    this.titleText = 'Rebuilt Dashboard',
     this.appBarColor,
     this.onWindowClose,
     required this.leading,

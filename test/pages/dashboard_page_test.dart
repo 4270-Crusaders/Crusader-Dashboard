@@ -105,7 +105,7 @@ void main() {
   group('[Responsive Layout]:', () {
     final fileButton = find.widgetWithText(SubmenuButton, 'File');
     final collapsedMenu = find.widgetWithIcon(SubmenuButton, Icons.menu);
-    final title = find.text('Elastic');
+    final title = find.text('Rebuilt Dashboard');
     final teamNumber = find.text('Team 353');
     final latency = find.textContaining('Latency:');
 

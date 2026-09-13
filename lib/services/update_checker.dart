@@ -32,7 +32,7 @@ class UpdateChecker {
 
       final List<Release> releases = await _github.repositories
           .listReleases(
-            RepositorySlug('Gold872', 'elastic_dashboard'),
+            RepositorySlug('4270-Crusaders', 'Rebuilt-Dashboard'),
           )
           .toList();
 

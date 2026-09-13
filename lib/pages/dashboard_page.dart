@@ -339,7 +339,7 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
     } else if (updateResponse.onLatestVersion && notifyIfLatest) {
       showInfoNotification(
         title: 'No Updates Available',
-        message: 'You are running on the latest version of Elastic',
+        message: 'You are running on the latest version of Rebuilt Dashboard',
         width: 350,
         height: 75,
       );
@@ -397,19 +397,19 @@ abstract class DashboardPageViewModel extends ChangeNotifier {
         Container(
           constraints: const BoxConstraints(maxWidth: 353),
           child: const Text(
-            'Elastic was created by Nadav from FRC Team 353, the POBots, in the Summer of 2023.\n',
+            'Rebuilt Dashboard is FRC Team 4270 Crusaders\' fork of Elastic, which was created by Nadav from FRC Team 353, the POBots, in the Summer of 2023.\n',
           ),
         ),
         Container(
           constraints: const BoxConstraints(maxWidth: 353),
           child: const Text(
-            'The goal of Elastic is to have the essential features needed for a driver dashboard, but with an elegant and modern display and a focus on customizability and performance.\n',
+            'The goal of the dashboard is to have the essential features needed for a driver dashboard, but with an elegant and modern display and a focus on customizability and performance.\n',
           ),
         ),
         Container(
           constraints: const BoxConstraints(maxWidth: 353),
           child: const Text(
-            'Elastic is an ongoing project; if you have any ideas, feedback, or bug reports, feel free to share them on the Github page!\n',
+            'Rebuilt Dashboard is an ongoing project; if you have any ideas, feedback, or bug reports, feel free to share them on the Github page!\n',
           ),
         ),
         Container(
