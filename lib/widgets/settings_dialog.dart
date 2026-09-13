@@ -1016,7 +1016,7 @@ class _SoundFileRowState extends State<_SoundFileRow> {
           onPressed: () async {
             const XTypeGroup audioGroup = XTypeGroup(
               label: 'Audio',
-              extensions: ['wav', 'mp3', 'ogg', 'aac', 'm4a'],
+              extensions: ['wav', 'mp3', 'aac', 'm4a'],
             );
             final XFile? file = await openFile(
               acceptedTypeGroups: [audioGroup],
