@@ -7,9 +7,9 @@ name: Elastic
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "rebuilt-dashboard"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "rebuilt-dashboard"]
   workflow_dispatch:
     inputs:
       upload-release:
