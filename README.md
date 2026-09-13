@@ -21,6 +21,9 @@ Elastic is a simple and modern FRC dashboard made by Nadav from FRC Team 353. It
 ## Documentation
 View the online documentation [here](https://frc-elastic.gitbook.io/docs)
 
+Crusader Dashboard additions:
+* [Sound Triggers](docs/sounds.md) — play a sound when a NetworkTables value changes
+
 ## Building and Contributing
 View the instructions for building code and making contributions to the project in the [CONTRIBUTING.md](CONTRIBUTING.md) file
 
