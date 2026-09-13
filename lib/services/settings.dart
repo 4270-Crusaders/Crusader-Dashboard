@@ -22,7 +22,7 @@ extension LogLevelUtil on Level {
 
 class Settings {
   static const String repositoryLink =
-      'https://github.com/4270-Crusaders/Rebuilt-Dashboard';
+      'https://github.com/4270-Crusaders/Crusader-Dashboard';
   static const String releasesLink = '$repositoryLink/releases/latest';
 
   // window_manager doesn't support drag disable/maximize

@@ -272,7 +272,7 @@ jobs:
   github-pages:
     name: "Upload to GitHub Pages"
     runs-on: ubuntu-22.04
-    if: github.repository == '4270-Crusaders/Rebuilt-Dashboard' && github.ref == 'refs/heads/main'
+    if: github.repository == '4270-Crusaders/Crusader-Dashboard' && github.ref == 'refs/heads/main'
     needs: [build-web]
     steps:
       - name: Download Web Build

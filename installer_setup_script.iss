@@ -1,7 +1,7 @@
 #define MyAppName "Crusader Dashboard"
 #define MyAppFolderName "FRC Crusader Dashboard"
 #define MyAppPublisher "FRC Team 4270"
-#define MyAppURL "https://github.com/4270-Crusaders/Rebuilt-Dashboard/"
+#define MyAppURL "https://github.com/4270-Crusaders/Crusader-Dashboard/"
 #define MyAppExeName "crusader_dashboard.exe"
 #define MyAppSourceDir "build\windows\x64\runner\Release"
 #define MyAppExePath MyAppSourceDir + "\" + MyAppExeName
