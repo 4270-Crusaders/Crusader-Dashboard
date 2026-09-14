@@ -1022,8 +1022,9 @@ class _SoundFileRowState extends State<_SoundFileRow> {
               acceptedTypeGroups: [audioGroup],
             );
             if (file != null) {
-              setState(() => _path = file.path);
-              widget.onPathSelected(file.path);
+              final String path = await importSoundFile(file);
+              setState(() => _path = path);
+              widget.onPathSelected(path);
             }
           },
           child: const Text('Browse'),

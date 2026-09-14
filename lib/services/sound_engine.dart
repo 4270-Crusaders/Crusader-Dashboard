@@ -1,6 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:file_selector/file_selector.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:crusader_dashboard/models/sound_trigger.dart';
@@ -215,4 +219,16 @@ class SoundEngine {
       player.dispose();
     }
   }
+}
+
+/// Copies a user-picked sound into app support so it stays readable after
+/// restart (macOS sandbox only grants access to picked files for one session).
+Future<String> importSoundFile(XFile file) async {
+  final Directory dir = Directory(
+    p.join((await getApplicationSupportDirectory()).path, 'sounds'),
+  );
+  await dir.create(recursive: true);
+  final String dest = p.join(dir.path, p.basename(file.path));
+  await file.saveTo(dest);
+  return dest;
 }

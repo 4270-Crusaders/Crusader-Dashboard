@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import 'package:crusader_dashboard/models/sound_trigger.dart';
 import 'package:crusader_dashboard/services/log.dart';
+import 'package:crusader_dashboard/services/sound_engine.dart';
 import 'package:crusader_dashboard/services/nt4_client.dart';
 import 'package:crusader_dashboard/services/settings.dart';
 import 'package:crusader_dashboard/widgets/dialog_widgets/dialog_dropdown_chooser.dart';
@@ -312,8 +313,9 @@ class _SoundFilePickerState extends State<_SoundFilePicker> {
                 acceptedTypeGroups: [audioGroup],
               );
               if (file != null) {
-                setState(() => _path = file.path);
-                widget.onPathSelected(file.path);
+                final String path = await importSoundFile(file);
+                setState(() => _path = path);
+                widget.onPathSelected(path);
               }
             },
             child: const Text('Browse'),
