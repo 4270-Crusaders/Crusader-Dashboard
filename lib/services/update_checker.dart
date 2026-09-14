@@ -36,11 +36,14 @@ class UpdateChecker {
           )
           .toList();
 
+      // Only consider Crusader Dashboard builds (tagged vX.Y.Z-...-4270.N),
+      // not upstream Elastic releases that may share the repo's tag history
       final Iterable<Release> yearReleases = releases.where((release) {
         Version? latest = release.getVersion();
 
         if (latest == null) return false;
         if (latest.major != current.major) return false;
+        if (!release.tagName!.contains('-4270.')) return false;
 
         return true;
       });
