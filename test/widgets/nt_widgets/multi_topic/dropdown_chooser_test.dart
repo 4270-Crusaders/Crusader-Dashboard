@@ -45,12 +45,12 @@ void main() {
           properties: {},
         ),
         NT4Topic(
-          name: 'Test/Dropdown Chooser/selected/value',
+          name: 'Test/Dropdown Chooser/active',
           type: NT4Type.string(),
           properties: {},
         ),
         NT4Topic(
-          name: 'Test/Dropdown Chooser/selected/tune',
+          name: 'Test/Dropdown Chooser/selected',
           type: NT4Type.string(),
           properties: {'retained': true},
         ),
@@ -58,8 +58,8 @@ void main() {
       virtualValues: {
         'Test/Dropdown Chooser/options': ['One', 'Two', 'Three'],
         'Test/Dropdown Chooser/default': 'Two',
-        'Test/Dropdown Chooser/selected/value': 'Two',
-        'Test/Dropdown Chooser/selected/tune': null,
+        'Test/Dropdown Chooser/active': 'Two',
+        'Test/Dropdown Chooser/selected': null,
       },
     );
   });

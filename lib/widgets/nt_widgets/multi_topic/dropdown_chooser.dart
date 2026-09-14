@@ -16,8 +16,8 @@ class DropdownChooserModel extends MultiTopicNTWidgetModel {
   String type = DropdownChooser.widgetType;
 
   String get optionsTopicName => '$topic/options';
-  String get selectedTopicName => '$topic/selected/tune';
-  String get activeTopicName => '$topic/selected/value';
+  String get selectedTopicName => '$topic/selected';
+  String get activeTopicName => '$topic/active';
   String get defaultTopicName => '$topic/default';
 
   late NT4Subscription optionsSubscription;
